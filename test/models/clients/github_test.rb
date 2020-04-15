@@ -15,11 +15,11 @@ class Clients::GithubTest < ActiveSupport::TestCase
   end
   
   test "github client contains route to generic /contents" do
-    assert_not_nil(Clients::Github::CONTENTS)
+    assert_not_nil Clients::Github::CONTENTS
   end
   
   test "github client builds repo classes for each repo in org" do
-    assert_instance_of(Repo, Clients::Github.new.repos.first)
+    assert_instance_of Repo, Clients::Github.new.repos.first
   end
   
 end

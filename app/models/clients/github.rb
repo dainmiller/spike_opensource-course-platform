@@ -1,5 +1,4 @@
-module Clients
-  
+module Clients  
   class Github
     include Clientable
     
