@@ -8,6 +8,7 @@ class RepoTest < ActiveSupport::TestCase
   
   test "Repo class should start w/response json" do
     assert_raise(ArgumentError) { Repo.new }
+    assert Repo.new({})
   end
   
   test "Repo class contains URL to contents for that repo on github" do  

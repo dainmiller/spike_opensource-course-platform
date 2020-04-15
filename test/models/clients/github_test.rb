@@ -23,15 +23,20 @@ class Clients::GithubTest < ActiveSupport::TestCase
   end
   
   test "github client exposes a #.all method that proxies #.new class method" do
-    assert_instance_of Clients::Github, Clients::Github.all
-    assert_instance_of Clients::Github, Clients::Github.new
+    assert_respond_to   Clients::Github, :all
+    assert_instance_of  Clients::Github, Clients::Github.all
+    assert_instance_of  Clients::Github, Clients::Github.new
   end
   
   test "github client exposes a #.each instance method that iterates over repos" do
-    assert_raise(LocalJumpError) { Clients::Github.new.each }
     assert Clients::Github.new.each { |e| nil } 
+    assert_respond_to Clients::Github.all, :each
+    assert_raise(LocalJumpError) { Clients::Github.new.each }
+    
     Clients::Github.all.each do |repo|
-      assert_instance_of(Repo, repo)
+      assert_instance_of  Repo, repo
+      assert_respond_to   repo, :title
     end
   end
+  
 end
