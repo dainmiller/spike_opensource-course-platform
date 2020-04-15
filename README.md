@@ -1,10 +1,8 @@
 # OpenCourse
 
-[![Build Status](https://img.shields.io/circleci/project/github/tootsuite/mastodon.svg)][circleci]
-[![Code Climate](https://img.shields.io/codeclimate/maintainability/tootsuite/mastodon.svg)][codeclimate]
-
-[circleci]: https://circleci.com/gh/tootsuite/mastodon
-[codeclimate]: https://codeclimate.com/github/tootsuite/mastodon
+[![Build Status](https://travis-ci.org/dainmiller/OpenCourse.svg?branch=master)](https://travis-ci.org/dainmiller/OpenCourse)
+[![Maintainability](https://api.codeclimate.com/v1/badges/d364e87c4a6e974dac96/maintainability)](https://codeclimate.com/github/dainmiller/OpenCourse/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/d364e87c4a6e974dac96/test_coverage)](https://codeclimate.com/github/dainmiller/OpenCourse/test_coverage)
 
 OpenCourse is a **free, open-source course platform application** based on [OpenProtocol]().
 
