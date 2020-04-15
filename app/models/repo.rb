@@ -1,3 +1,13 @@
+# Formats the repository data from github into a class's attributes.
+#
+# ==== Options
+#
+# * <tt>:response</tt> - The JSON data directly from Github
+# 
+# ==== Examples
+#
+#   Repo.new({}) # => <RepoClass @response>
+#
 class Repo
   include Clientable
   
@@ -15,6 +25,9 @@ class Repo
     @title ||= @response.fetch('name')
   end
   
+  # Fetches contents of the repository from Github
+  # 
+  # 
   def contents
     @contents ||= fetch_and_parse url
   end
