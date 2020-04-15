@@ -84,6 +84,8 @@
     
     <li ><a href="#method-c-all">::all</a>
     
+    <li ><a href="#method-c-build">::build</a>
+    
     <li ><a href="#method-c-new">::new</a>
     
     <li ><a href="#method-i-each">#each</a>
@@ -110,6 +112,14 @@
 &#39;opensourcecourse&#39; github org.</p>
 
 <h4 id="class-Clients::Github-label-Examples">Examples<span><a href="#class-Clients::Github-label-Examples">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>Fetching the repos from <a href="Github.html">Github</a> can be called via</p>
+
+<pre class="ruby"><span class="ruby-constant">Clients</span><span class="ruby-operator">::</span><span class="ruby-constant">Github</span>.<span class="ruby-identifier">all</span>
+<span class="ruby-constant">Clients</span><span class="ruby-operator">::</span><span class="ruby-constant">Github</span>.<span class="ruby-identifier">build</span>
+</pre>
+
+<p>or for fallback purposes…</p>
 
 <pre class="ruby"><span class="ruby-constant">Clients</span><span class="ruby-operator">::</span><span class="ruby-constant">Github</span>.<span class="ruby-identifier">new</span>
 </pre>
@@ -177,11 +187,18 @@
 
         <div class="method-description">
           
-          <p>Proxy method that allows a simpler interface to the &amp;.each API.</p>
+          <p>Proxy class methods that allows a simpler interface to the &amp;.each API.</p>
 
 <h4 id="method-c-all-label-Examples">Examples<span><a href="#method-c-all-label-Examples">&para;</a> <a href="#top">&uarr;</a></span></h4>
 
 <pre class="ruby"><span class="ruby-constant">Clients</span><span class="ruby-operator">::</span><span class="ruby-constant">Github</span>.<span class="ruby-identifier">all</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">repo</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-identifier">repo</span> <span class="ruby-comment"># =&gt; &lt;RepoClass @response=data&gt;</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>or</p>
+
+<pre class="ruby"><span class="ruby-constant">Clients</span><span class="ruby-operator">::</span><span class="ruby-constant">Github</span>.<span class="ruby-identifier">build</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">repo</span><span class="ruby-operator">|</span>
   <span class="ruby-identifier">puts</span> <span class="ruby-identifier">repo</span> <span class="ruby-comment"># =&gt; &lt;RepoClass @response=data&gt;</span>
 <span class="ruby-keyword">end</span>
 </pre>
@@ -190,10 +207,39 @@
 
           
           <div class="method-source-code" id="all-source">
-            <pre><span class="ruby-comment"># File app/models/clients/github.rb, line 29</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">all</span>
-  <span class="ruby-identifier">new</span>
-<span class="ruby-keyword">end</span></pre>
+            <pre><span class="ruby-comment"># File app/models/clients/github.rb, line 42</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">all</span> ; <span class="ruby-identifier">new</span> ; <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-build" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">build</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="build-source">
+            <pre><span class="ruby-comment"># File app/models/clients/github.rb, line 43</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">build</span> ; <span class="ruby-identifier">new</span> ; <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -223,7 +269,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File app/models/clients/github.rb, line 33</span>
+            <pre><span class="ruby-comment"># File app/models/clients/github.rb, line 46</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>
   <span class="ruby-ivar">@repos</span> = <span class="ruby-identifier">repos</span>
 <span class="ruby-keyword">end</span></pre>
@@ -264,11 +310,9 @@
 
           
           <div class="method-source-code" id="each-source">
-            <pre><span class="ruby-comment"># File app/models/clients/github.rb, line 41</span>
+            <pre><span class="ruby-comment"># File app/models/clients/github.rb, line 54</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">each</span>
-  <span class="ruby-identifier">repos</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">repo</span><span class="ruby-operator">|</span>
-    <span class="ruby-keyword">yield</span> <span class="ruby-identifier">repo</span>
-  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">repos</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">repo</span><span class="ruby-operator">|</span> <span class="ruby-keyword">yield</span> <span class="ruby-identifier">repo</span> }
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -299,7 +343,7 @@
 
           
           <div class="method-source-code" id="repos-source">
-            <pre><span class="ruby-comment"># File app/models/clients/github.rb, line 37</span>
+            <pre><span class="ruby-comment"># File app/models/clients/github.rb, line 50</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">repos</span>
   <span class="ruby-identifier">cache_and_fetch_and_parse</span>(<span class="ruby-constant">REPOS</span>).<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">repo</span><span class="ruby-operator">|</span> <span class="ruby-constant">Repo</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">repo</span>) }
 <span class="ruby-keyword">end</span></pre>

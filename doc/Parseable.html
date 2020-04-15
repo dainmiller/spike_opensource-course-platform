@@ -132,7 +132,8 @@
           <div class="method-source-code" id="parse-source">
             <pre><span class="ruby-comment"># File app/models/concerns/parseable.rb, line 6</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse</span> <span class="ruby-identifier">data</span>
-  <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span> <span class="ruby-identifier">data</span>
+  <span class="ruby-ivar">@parsed</span> = <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span> <span class="ruby-identifier">data</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@parsed</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
