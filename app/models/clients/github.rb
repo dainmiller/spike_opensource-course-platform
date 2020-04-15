@@ -8,8 +8,14 @@ module Clients
   # 
   # ==== Examples
   # 
-  #   Clients::Github.new
+  # Fetching the repos from Github can be called via
+  # 
+  #   Clients::Github.all
+  #   Clients::Github.build
   #
+  # or for fallback purposes...
+  #
+  #   Clients::Github.new
   class Github
     include Clientable
     
@@ -17,17 +23,24 @@ module Clients
     ORG       = "opensourcecourses"
     REPOS     = "#{ROOT}/orgs/#{ORG}/repos"
     CONTENTS  = "/contents"
-  
-    # Proxy method that allows a simpler interface
-    # to the &.each API.
-    #
-    # ==== Examples
-    #
-    #   Clients::Github.all.each do |repo|
-    #     puts repo # => <RepoClass @response=data>
-    #   end
-    def self.all
-      new
+    
+    class << self
+      # Proxy class methods that allows a simpler interface
+      # to the &.each API.
+      #
+      # ==== Examples
+      #
+      #   Clients::Github.all.each do |repo|
+      #     puts repo # => <RepoClass @response=data>
+      #   end
+      # 
+      # or
+      #
+      #   Clients::Github.build.each do |repo|
+      #     puts repo # => <RepoClass @response=data>
+      #   end
+      def all ; new ; end
+      def build ; new ; end
     end
     
     def initialize
@@ -39,9 +52,7 @@ module Clients
     end
     
     def each
-      repos.each do |repo|
-        yield repo
-      end
+      repos.each { |repo| yield repo }
     end
     
   end

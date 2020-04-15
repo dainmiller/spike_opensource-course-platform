@@ -4,7 +4,8 @@ module Parseable
   included do
     
     def parse data
-      JSON.parse data
+      @parsed = JSON.parse data
+      return @parsed
     end
     
   end

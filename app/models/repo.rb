@@ -26,8 +26,6 @@ class Repo
   end
   
   # Fetches contents of the repository from Github
-  # 
-  # 
   def contents
     @contents ||= fetch_and_parse url
   end
