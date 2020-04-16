@@ -42,4 +42,5 @@ class RepoTest < ActiveSupport::TestCase
       assert_nothing_raised { repo.save! }
     end
   end
+  
 end

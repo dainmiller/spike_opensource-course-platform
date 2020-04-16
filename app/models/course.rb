@@ -1,12 +1,12 @@
 class Course < ApplicationRecord
-  include Recordable
-  
-  belongs_to :vault
+  include Vaultable, Recordable, Bucketable
 
   validates :title, presence: true
   
-  after_create do
-    Recordable.for(self).save
+  after_commit :record, on: [:create, :update]
+  
+  def record
+    Recordable.for self
   end
   
 end
