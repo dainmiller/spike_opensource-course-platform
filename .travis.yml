@@ -1,7 +1,8 @@
 language: ruby
 rvm:
  - 2.2
- - jruby
+before_install:
+- gem install bundler
 script:
 - bundle exec rake build
 - bundle exec rake builddoc
