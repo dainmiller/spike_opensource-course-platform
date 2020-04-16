@@ -75,9 +75,9 @@
 
   <ul class="link-list" role="directory">
     
-    <li ><a href="#method-c-for">::for</a>
-    
     <li ><a href="#method-i-record">#record</a>
+    
+    <li ><a href="#method-i-save_with">#save_with</a>
     
   </ul>
 </div>
@@ -107,48 +107,6 @@
     
 
     
-     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
-       <header>
-         <h3>Public Class Methods</h3>
-       </header>
-
-    
-      <div id="method-c-for" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">for</span><span
-            class="method-args">(entity)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="for-source">
-            <pre><span class="ruby-comment"># File app/models/concerns/recordable.rb, line 28</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-keyword">for</span> <span class="ruby-identifier">entity</span>
-  <span class="ruby-identifier">entity</span>.<span class="ruby-identifier">recordings</span>.<span class="ruby-identifier">create</span>        <span class="ruby-identifier">type</span><span class="ruby-operator">:</span> <span class="ruby-identifier">entity</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">table_name</span>,
-    <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;active&#39;</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-
-        
-      </div>
-
-    
-    </section>
-  
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
        <header>
          <h3>Public Instance Methods</h3>
@@ -159,7 +117,7 @@
         
         <div class="method-heading">
           <span class="method-name">record</span><span
-            class="method-args">()</span>
+            class="method-args">(entity)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -172,7 +130,7 @@
 relationship.</p>
 
 <p>#.record is only meant to be used in `after_*` rails callbacks. This is why
-we pass entity as  a parameter, instead of an `entity.record` API.</p>
+we pass `entity` as a  parameter, instead of using an `entity.record` API.</p>
 
 <h4 id="method-i-record-label-Example">Example<span><a href="#method-i-record-label-Example">&para;</a> <a href="#top">&uarr;</a></span></h4>
 
@@ -190,8 +148,42 @@ we pass entity as  a parameter, instead of an `entity.record` API.</p>
           
           <div class="method-source-code" id="record-source">
             <pre><span class="ruby-comment"># File app/models/concerns/recordable.rb, line 23</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">record</span>
-  <span class="ruby-constant">Recordable</span>.<span class="ruby-identifier">for</span>(<span class="ruby-keyword">self</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">record</span> <span class="ruby-identifier">entity</span>
+  <span class="ruby-identifier">save_with</span> <span class="ruby-identifier">entity</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-save_with" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">save_with</span><span
+            class="method-args">(entity)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="save_with-source">
+            <pre><span class="ruby-comment"># File app/models/concerns/recordable.rb, line 28</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">save_with</span> <span class="ruby-identifier">entity</span>
+  <span class="ruby-identifier">entity</span>.<span class="ruby-identifier">recordings</span>.<span class="ruby-identifier">create</span>        <span class="ruby-identifier">recording_type</span><span class="ruby-operator">:</span> <span class="ruby-identifier">entity</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">table_name</span>,
+    <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;active&#39;</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           

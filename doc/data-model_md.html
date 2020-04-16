@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>RDoc Documentation</title>
+<title>data-model - RDoc Documentation</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "./";
@@ -34,7 +34,6 @@
   </div>
 </div>
 
-
     <div id="search-section" role="search" class="project-section initially-hidden">
   <form action="#" method="get" accept-charset="utf-8">
     <div id="search-field-wrapper">
@@ -51,6 +50,8 @@
 </div>
 
   </div>
+
+  
 
   <div id="project-metadata">
     <div id="fileindex-section" class="nav-section">
@@ -129,109 +130,44 @@
   </ul>
 </div>
 
-    <div id="classindex-section" class="nav-section">
-  <h3>Class and Module Index</h3>
-
-  <ul class="link-list">
-  
-    <li><a href="./ActiveRecord.html">ActiveRecord</a>
-  
-    <li><a href="./ActiveSupport.html">ActiveSupport</a>
-  
-    <li><a href="./ActiveSupport/TestCase.html">ActiveSupport::TestCase</a>
-  
-    <li><a href="./AddCourseIdToRecordings.html">AddCourseIdToRecordings</a>
-  
-    <li><a href="./ApplicationCable.html">ApplicationCable</a>
-  
-    <li><a href="./ApplicationCable/Channel.html">ApplicationCable::Channel</a>
-  
-    <li><a href="./ApplicationCable/Connection.html">ApplicationCable::Connection</a>
-  
-    <li><a href="./ApplicationCable/ConnectionTest.html">ApplicationCable::ConnectionTest</a>
-  
-    <li><a href="./ApplicationController.html">ApplicationController</a>
-  
-    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
-  
-    <li><a href="./ApplicationJob.html">ApplicationJob</a>
-  
-    <li><a href="./ApplicationMailer.html">ApplicationMailer</a>
-  
-    <li><a href="./ApplicationRecord.html">ApplicationRecord</a>
-  
-    <li><a href="./ApplicationSystemTestCase.html">ApplicationSystemTestCase</a>
-  
-    <li><a href="./Attendees.html">Attendees</a>
-  
-    <li><a href="./Bucketable.html">Bucketable</a>
-  
-    <li><a href="./Bundler.html">Bundler</a>
-  
-    <li><a href="./Cacheable.html">Cacheable</a>
-  
-    <li><a href="./ChangeColumnTypeToRecordingsTypeOnRecordings.html">ChangeColumnTypeToRecordingsTypeOnRecordings</a>
-  
-    <li><a href="./ChangeColumnTypeToRecordingsTypeOnRecordings2.html">ChangeColumnTypeToRecordingsTypeOnRecordings2</a>
-  
-    <li><a href="./Clientable.html">Clientable</a>
-  
-    <li><a href="./Clients.html">Clients</a>
-  
-    <li><a href="./Clients/Github.html">Clients::Github</a>
-  
-    <li><a href="./Clients/GithubTest.html">Clients::GithubTest</a>
-  
-    <li><a href="./Clients/Repo.html">Clients::Repo</a>
-  
-    <li><a href="./Clients/RepoTest.html">Clients::RepoTest</a>
-  
-    <li><a href="./Course.html">Course</a>
-  
-    <li><a href="./CourseTest.html">CourseTest</a>
-  
-    <li><a href="./CreateCourses.html">CreateCourses</a>
-  
-    <li><a href="./CreateRecordings.html">CreateRecordings</a>
-  
-    <li><a href="./CreateVaults.html">CreateVaults</a>
-  
-    <li><a href="./Fetchable.html">Fetchable</a>
-  
-    <li><a href="./Logger.html">Logger</a>
-  
-    <li><a href="./Notification.html">Notification</a>
-  
-    <li><a href="./Object.html">Object</a>
-  
-    <li><a href="./OpenCourse.html">OpenCourse</a>
-  
-    <li><a href="./OpenCourse/Application.html">OpenCourse::Application</a>
-  
-    <li><a href="./Parseable.html">Parseable</a>
-  
-    <li><a href="./Recordable.html">Recordable</a>
-  
-    <li><a href="./RecordableTest.html">RecordableTest</a>
-  
-    <li><a href="./Recording.html">Recording</a>
-  
-    <li><a href="./Vault.html">Vault</a>
-  
-    <li><a href="./VaultTest.html">VaultTest</a>
-  
-    <li><a href="./Vaultable.html">Vaultable</a>
-  
-    <li><a href="./Webpacker.html">Webpacker</a>
-  
-  </ul>
-</div>
-
   </div>
 </nav>
 
-<main role="main">
-<p>This is the API documentation for RDoc Documentation.
+<main role="main" aria-label="Page data-model.md">
+
+<h1 id="label-Data+Model">Data Model<span><a href="#label-Data+Model">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p><code>Concerns ONLY used for relations aren&#39;t included (but represented
+in tree)</code></p>
+
+<p><code>+ = Concern</code> | <code>- = Data model</code></p>
+<ul><li>
+<p><a href="Clients/Github.html">Clients::Github</a>  + +Clientable  +
++Cacheable  + +Fetchable  + +Parseable</p>
+</li><li>
+<p><a href="Clients/Repo.html">Clients::Repo</a></p>
+</li><li>
+<p><a href="Vault.html">Vault</a>  + +Bucketable</p>
+</li><li>
+<p>Catalog</p>
+</li><li>
+<p><a href="Course.html">Course</a>  + +Bucketable  + +Attendable  +
++Completable</p>
+</li><li>
+<p>Track  + +Completable</p>
+</li><li>
+<p>Lesson  + +Completable</p>
+</li><li>
+<p>Bucket  + +Recordable</p>
+</li><li>
+<p><a href="Recording.html">Recording</a>  + +Notifiable</p>
+</li><li>
+<p><a href="Notification.html">Notification</a>  - Mentionee  - Mentioner</p>
+</li><li>
+<p>People  - User  - Attendee  - Guest</p>
+</li><li>
+<p>Status</p>
+</li></ul>
 </main>
 
 
