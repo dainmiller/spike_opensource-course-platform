@@ -95,6 +95,12 @@
     
     <li ><a href="#method-i-contents">#contents</a>
     
+    <li ><a href="#method-i-course">#course</a>
+    
+    <li ><a href="#method-i-save">#save</a>
+    
+    <li ><a href="#method-i-save-21">#save!</a>
+    
   </ul>
 </div>
 
@@ -131,6 +137,20 @@
     
 
     
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="SETTINGS">SETTINGS
+        
+        <dd>
+        
+      
+      </dl>
+    </section>
+    
 
     
     <section class="attribute-method-details" class="method-section">
@@ -142,7 +162,7 @@
       <div id="attribute-i-response" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">response</span><span
-            class="attribute-access-type">[R]</span>
+            class="attribute-access-type">[RW]</span>
         </div>
 
         <div class="method-description">
@@ -155,7 +175,7 @@
       <div id="attribute-i-title" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">title</span><span
-            class="attribute-access-type">[R]</span>
+            class="attribute-access-type">[RW]</span>
         </div>
 
         <div class="method-description">
@@ -168,7 +188,7 @@
       <div id="attribute-i-url" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">url</span><span
-            class="attribute-access-type">[R]</span>
+            class="attribute-access-type">[RW]</span>
         </div>
 
         <div class="method-description">
@@ -207,7 +227,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File app/models/repo.rb, line 16</span>
+            <pre><span class="ruby-comment"># File app/models/repo.rb, line 19</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">response</span>
   <span class="ruby-ivar">@response</span> = <span class="ruby-identifier">response</span>
 <span class="ruby-keyword">end</span></pre>
@@ -242,15 +262,117 @@
 
         <div class="method-description">
           
-          <p>Fetches contents of the repository from Github</p>
+          
           
           
 
           
           <div class="method-source-code" id="contents-source">
-            <pre><span class="ruby-comment"># File app/models/repo.rb, line 29</span>
+            <pre><span class="ruby-comment"># File app/models/repo.rb, line 33</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">contents</span>
   <span class="ruby-ivar">@contents</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">fetch_and_parse</span> <span class="ruby-identifier">url</span>
+  <span class="ruby-ivar">@contents</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-course" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">course</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="course-source">
+            <pre><span class="ruby-comment"># File app/models/repo.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">course</span>
+  <span class="ruby-constant">SETTINGS</span>[<span class="ruby-value">:table</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-save" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">save</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="save-source">
+            <pre><span class="ruby-comment"># File app/models/repo.rb, line 42</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">save</span>
+  <span class="ruby-constant">Course</span>.<span class="ruby-identifier">transaction</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">_save</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-save-21" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">save!</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="save-21-source">
+            <pre><span class="ruby-comment"># File app/models/repo.rb, line 48</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">save!</span>
+  <span class="ruby-identifier">_save</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
