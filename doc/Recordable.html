@@ -75,9 +75,9 @@
 
   <ul class="link-list" role="directory">
     
-    <li ><a href="#method-c-build">::build</a>
+    <li ><a href="#method-c-for">::for</a>
     
-    <li ><a href="#method-c-save-21">::save!</a>
+    <li ><a href="#method-i-record">#record</a>
     
   </ul>
 </div>
@@ -113,11 +113,11 @@
        </header>
 
     
-      <div id="method-c-build" class="method-detail ">
+      <div id="method-c-for" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">build</span><span
-            class="method-args">(recording)</span>
+          <span class="method-name">for</span><span
+            class="method-args">(entity)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -131,10 +131,11 @@
           
 
           
-          <div class="method-source-code" id="build-source">
-            <pre><span class="ruby-comment"># File app/models/concerns/recordable.rb, line 4</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">build</span> <span class="ruby-identifier">recording</span>
-  <span class="ruby-comment"># TODO: Build attributes here and then return back</span>
+          <div class="method-source-code" id="for-source">
+            <pre><span class="ruby-comment"># File app/models/concerns/recordable.rb, line 28</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-keyword">for</span> <span class="ruby-identifier">entity</span>
+  <span class="ruby-identifier">entity</span>.<span class="ruby-identifier">recordings</span>.<span class="ruby-identifier">create</span>        <span class="ruby-identifier">type</span><span class="ruby-operator">:</span> <span class="ruby-identifier">entity</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">table_name</span>,
+    <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;active&#39;</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -146,10 +147,18 @@
       </div>
 
     
-      <div id="method-c-save-21" class="method-detail ">
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-record" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">save!</span><span
+          <span class="method-name">record</span><span
             class="method-args">()</span>
           
           <span class="method-click-advice">click to toggle source</span>
@@ -159,15 +168,30 @@
 
         <div class="method-description">
           
-          
+          <p>The #.record API is meant to be included in  classes with a recording
+relationship.</p>
+
+<p>#.record is only meant to be used in `after_*` rails callbacks. This is why
+we pass entity as  a parameter, instead of an `entity.record` API.</p>
+
+<h4 id="method-i-record-label-Example">Example<span><a href="#method-i-record-label-Example">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">Course</span>
+  <span class="ruby-identifier">include</span> <span class="ruby-constant">Recordable</span>
+
+  <span class="ruby-identifier">after_commit</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">record</span> <span class="ruby-keyword">self</span> <span class="ruby-comment"># =&gt; &lt;Recording type=&#39;Course&#39; status=&#39;active&#39;&gt;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+</pre>
           
           
 
           
-          <div class="method-source-code" id="save-21-source">
-            <pre><span class="ruby-comment"># File app/models/concerns/recordable.rb, line 8</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">save!</span>
-  <span class="ruby-comment"># TODO: Implement</span>
+          <div class="method-source-code" id="record-source">
+            <pre><span class="ruby-comment"># File app/models/concerns/recordable.rb, line 23</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">record</span>
+  <span class="ruby-constant">Recordable</span>.<span class="ruby-identifier">for</span>(<span class="ruby-keyword">self</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           

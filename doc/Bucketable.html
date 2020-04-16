@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class Course - RDoc Documentation</title>
+<title>module Bucketable - RDoc Documentation</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "./";
@@ -19,7 +19,7 @@
 
 
 
-<body id="top" role="document" class="class">
+<body id="top" role="document" class="module">
 <nav role="navigation">
   <div id="project-navigation">
     <div id="home-section" role="region" title="Quick navigation" class="nav-section">
@@ -55,46 +55,27 @@
 
   <div id="class-metadata">
     
-    <div id="parent-class-section" class="nav-section">
-  <h3>Parent</h3>
-
-  
-  <p class="link"><a href="ApplicationRecord.html">ApplicationRecord</a>
-  
-</div>
-
-    <div id="includes-section" class="nav-section">
-  <h3>Included Modules</h3>
+    
+    
+    <div id="extends-section" class="nav-section">
+  <h3>Extended With Modules</h3>
 
   <ul class="link-list">
+    
   
-  
-    <li><a class="include" href="Vaultable.html">Vaultable</a>
-  
-  
-  
-    <li><a class="include" href="Recordable.html">Recordable</a>
-  
-  
-  
-    <li><a class="include" href="Bucketable.html">Bucketable</a>
-  
-  
-  
-    <li><a class="include" href="Attendees.html">Attendees</a>
+    <li><span class="extend">ActiveSupport::Concern</span>
   
   
   </ul>
 </div>
 
-    
     <!-- Method Quickref -->
 <div id="method-list-section" class="nav-section">
   <h3>Methods</h3>
 
   <ul class="link-list" role="directory">
     
-    <li ><a href="#method-i-to_s">#to_s</a>
+    <li ><a href="#method-c-save">::save</a>
     
   </ul>
 </div>
@@ -102,9 +83,9 @@
   </div>
 </nav>
 
-<main role="main" aria-labelledby="class-Course">
-  <h1 id="class-Course" class="class">
-    class Course
+<main role="main" aria-labelledby="module-Bucketable">
+  <h1 id="module-Bucketable" class="module">
+    module Bucketable
   </h1>
 
   <section class="description">
@@ -124,16 +105,16 @@
     
 
     
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
        <header>
-         <h3>Public Instance Methods</h3>
+         <h3>Public Class Methods</h3>
        </header>
 
     
-      <div id="method-i-to_s" class="method-detail ">
+      <div id="method-c-save" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">to_s</span><span
+          <span class="method-name">save</span><span
             class="method-args">()</span>
           
           <span class="method-click-advice">click to toggle source</span>
@@ -148,10 +129,10 @@
           
 
           
-          <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File app/models/course.rb, line 10</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
-  <span class="ruby-identifier">title</span>
+          <div class="method-source-code" id="save-source">
+            <pre><span class="ruby-comment"># File app/models/concerns/bucketable.rb, line 8</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">save</span>
+  <span class="ruby-constant">Bucket</span>.<span class="ruby-identifier">create</span>        <span class="ruby-identifier">type</span><span class="ruby-operator">:</span> <span class="ruby-identifier">entity</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">table_name</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
