@@ -8,8 +8,8 @@ module Recordable
     # classes with a recording relationship.
     # 
     # #.record is only meant to be used in `after_*`
-    # rails callbacks. This is why we pass entity as 
-    # a parameter, instead of an `entity.record` API.
+    # rails callbacks. This is why we pass `entity` as a 
+    # parameter, instead of using an `entity.record` API.
     # 
     # ==== Example
     # 
@@ -20,12 +20,12 @@ module Recordable
     #       record self # => <Recording type='Course' status='active'>
     #     end
     #   end
-    def record
-      Recordable.for(self)
+    def record entity
+      save_with entity
     end
   end
   
-  def self.for entity
+  def save_with entity
     entity.recordings.create \
       type: entity.class.table_name,
       status: 'active'
