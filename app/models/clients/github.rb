@@ -1,5 +1,5 @@
 module Clients  
-  # 
+
   # Github Client that serves as an access point 
   # & client API for Github.
   #
@@ -31,13 +31,13 @@ module Clients
       # ==== Examples
       #
       #   Clients::Github.all.each do |repo|
-      #     puts repo # => <RepoClass @response=data>
+      #     puts repo # => <Clients::RepoClass @response=data>
       #   end
       # 
       # or
       #
       #   Clients::Github.build.each do |repo|
-      #     puts repo # => <RepoClass @response=data>
+      #     puts repo # => <Clients::RepoClass @response=data>
       #   end
       def all ; new ; end
       def build ; new ; end
@@ -46,9 +46,9 @@ module Clients
     def initialize
       @repos = repos
     end
-    
+
     def repos
-      cache_and_fetch_and_parse(REPOS).map { |repo| Repo.new(repo) }
+      cache_and_fetch_and_parse(REPOS).map { |repo| Clients::Repo.new(repo) }
     end
     
     def each

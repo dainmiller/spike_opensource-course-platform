@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_15_134355) do
+ActiveRecord::Schema.define(version: 2020_04_16_123544) do
 
   create_table "courses", force: :cascade do |t|
     t.integer "vault_id"
@@ -24,9 +24,17 @@ ActiveRecord::Schema.define(version: 2020_04_15_134355) do
     t.index ["vault_id"], name: "index_courses_on_vault_id"
   end
 
+  create_table "recordings", force: :cascade do |t|
+    t.string "status"
+    t.string "recording_type"
+    t.integer "course_id"
+    t.index ["course_id"], name: "index_recordings_on_course_id"
+  end
+
   create_table "vaults", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "recordings", "courses"
 end

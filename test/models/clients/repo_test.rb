@@ -1,14 +1,14 @@
 require 'test_helper'
 
-class RepoTest < ActiveSupport::TestCase
+class Clients::RepoTest < ActiveSupport::TestCase
   
   test "Repo class exists" do
-    assert Repo.new(nil)
+    assert Clients::Repo.new(nil)
   end
   
   test "Repo class should start w/response json" do
-    assert_raise(ArgumentError) { Repo.new }
-    assert Repo.new({})
+    assert_raise(ArgumentError) { Clients::Repo.new }
+    assert Clients::Repo.new({})
   end
   
   test "Repo class contains URL to contents for that repo on github" do  

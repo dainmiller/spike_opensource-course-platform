@@ -6,12 +6,12 @@
 # 
 # ==== Examples
 #
-#   Repo.new({}) # => <RepoClass @response>
+#   Clients::Repo.new({}) # => <Clients::RepoClass @response>
 #
-class Repo
+class Clients::Repo
   include Clientable
   attr_accessor :response, :url, :title
-    
+
   SETTINGS = {
     :table => Course
   }

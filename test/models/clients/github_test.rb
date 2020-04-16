@@ -19,7 +19,7 @@ class Clients::GithubTest < ActiveSupport::TestCase
   end
   
   test "github client builds Repo classes for each repo in github org" do
-    assert_instance_of Repo, Clients::Github.new.repos.first
+    assert_instance_of Clients::Repo, Clients::Github.new.repos.first
   end
   
   test "github client exposes a #.all method that proxies #.new class method" do
@@ -34,7 +34,7 @@ class Clients::GithubTest < ActiveSupport::TestCase
     assert_raise(LocalJumpError) { Clients::Github.new.each }
     
     Clients::Github.all.each do |repo|
-      assert_instance_of  Repo, repo
+      assert_instance_of  Clients::Repo, repo
       assert_respond_to   repo, :title
     end
   end

@@ -1,6 +1,6 @@
 module Recordable
   extend ActiveSupport::Concern
-  
+
   included do
     has_many :recordings
 
@@ -27,8 +27,9 @@ module Recordable
   
   def save_with entity
     entity.recordings.create \
-      type: entity.class.table_name,
+      recording_type: entity.class.table_name,
       status: 'active'
   end
   
 end
+

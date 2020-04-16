@@ -11,7 +11,7 @@ class CourseTest < ActiveSupport::TestCase
     course = Course.create
     assert_predicate course, :recordings
   end
-  
+
   test "fails validation if there is no 'title' attribute" do
     course_without_title = Course.new
     assert_raise(ActiveRecord::RecordInvalid) { c = Course.create! }
@@ -25,9 +25,9 @@ class CourseTest < ActiveSupport::TestCase
   end
 
   test "calls Recordable.for after the creation of a course object" do
-    course = Course.create(title: 'test')
+    course = Course.create title: 'not-important'
     assert_not_nil Recording.last
-    assert_equal 'course', Recording.last.type
+    assert_equal 'courses', Recording.last.recording_type
   end
   
 end
