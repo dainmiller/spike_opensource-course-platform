@@ -10,6 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2020_04_15_134355) do
+
+  create_table "courses", force: :cascade do |t|
+    t.integer "vault_id"
+    t.string "title"
+    t.string "status"
+    t.text "description"
+    t.string "topic"
+    t.string "url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["vault_id"], name: "index_courses_on_vault_id"
+  end
+
+  create_table "vaults", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
 end

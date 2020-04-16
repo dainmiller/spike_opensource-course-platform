@@ -26,4 +26,20 @@ class RepoTest < ActiveSupport::TestCase
     assert_not_nil repo.contents
   end
   
+  test "Repo class contains #.save method that allows it to save course data" do
+    repo = Clients::Github.new.repos.first
+    assert_predicate repo, :save
+  end
+  
+  test "Repo class #.save! method raises an error message if saving fails" do
+    Clients::Github.all.each do |repo|
+      assert_nothing_raised { repo.save! }
+    end
+  end
+  
+  test "github client #.save method does NOT raise an error message if saving fails" do
+    Clients::Github.all.each do |repo|
+      assert_nothing_raised { repo.save! }
+    end
+  end
 end
