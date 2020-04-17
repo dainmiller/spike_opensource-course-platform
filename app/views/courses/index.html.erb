@@ -1,0 +1,25 @@
+<div class="center-app left">
+	
+	<div class="inner-center">
+	
+		<div class="center-top">
+			<div class="search">
+				<input class="search" type="search" placeholder="Search..." />
+			</div>
+			<div class="notifications">
+			</div>
+		</div>
+		
+		<div class="courses">
+			<h1 id="courses">Courses</h1>
+			<% @courses.each do |course| %>
+				<div class="course course-<%= course.id %>">
+					<%= course.title %>
+					<div class="course-lessons">25 Lessons</div>					
+				</div>
+			<% end %>
+		</div>
+		
+	</div>
+	
+</div>

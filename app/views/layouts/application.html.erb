@@ -8,8 +8,33 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+	
   <body>
+		<div class="left-sidebar left">
+			<div class="logo">
+			</div>
+			
+			<div class="courses">
+				<a href="#"></a>
+			</div>
+			
+			<div class="groups">
+				<a href="#"></a>
+			</div>
+			
+			<div class="analytics">
+				<a href="#"></a>
+			</div>
+		</div>
+		
     <%= yield %>
+		
+		<div class="right-app right">
+			<div class="progress">
+			</div>
+			
+			<div class="achievements">
+			</div>
+		</div>
   </body>
 </html>

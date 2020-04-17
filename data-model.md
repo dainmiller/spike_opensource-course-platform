@@ -4,16 +4,16 @@
 
 `+ = Concern` | `- = Data model` | `* = implemented`
 
-- Clients::Github*
-	+ +Clientable*
-		+ +Cacheable*
-		+ +Fetchable*
-		+ +Parseable*
-- Clients::Repo*
-- Vault*
+- Clients::Github *
+	+ +Clientable *
+		+ +Cacheable *
+		+ +Fetchable *
+		+ +Parseable *
+- Clients::Repo *
+- Vault *
 	+ +Bucketable
-- Course*
-	+ +Recordable*
+- Course *
+	+ +Recordable *
 	+ +Bucketable
 	+ +Attendable
 	+ +Completable
@@ -28,9 +28,10 @@
 - Bucket
 	+ +Recordable
 	+ +Searchable
-- Recording*
+- Recording *
 	+ +Notifiable
 - Notification
+	* `#.eavesdrop`
 	- Mentionee
 	- Mentioner
 - People

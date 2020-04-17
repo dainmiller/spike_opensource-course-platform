@@ -1,7 +1,14 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+Dir["app/models/*.rb"].each do |model|
+  begin
+    name = model.split('.')[0]
+    name = File.basename(name)
+    "#{name}".titleize.constantize.destroy_all
+  rescue
+  end
+end
+
+Course.create \
+  title: 'Beginner Illustration'
+  
+Course.create \
+  title: 'Ruby on Rails for Beginner'

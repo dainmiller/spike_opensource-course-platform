@@ -22,17 +22,14 @@ class Clients::Repo
   
   def url
     @url ||= @response.fetch('url') + Clients::Github::CONTENTS
-    @url
   end
   
   def title
-    @title ||= @response.fetch('name')
-    @title
+    @title ||= @response.fetch 'name'
   end
   
   def contents
     @contents ||= fetch_and_parse url
-    @contents
   end
   
   def course
@@ -51,7 +48,8 @@ class Clients::Repo
   
   private
     def _save
-      course.find_or_create_by title: title, url: url
+      course.find_or_create_by \
+        title: title, url: url
     end
     
 end
