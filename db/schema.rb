@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_16_123544) do
+ActiveRecord::Schema.define(version: 2020_04_17_040442) do
+
+  create_table "buckets", force: :cascade do |t|
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "bucketable_id"
+    t.string "bucketable_type"
+    t.index ["bucketable_type", "bucketable_id"], name: "index_buckets_on_bucketable_type_and_bucketable_id"
+  end
 
   create_table "courses", force: :cascade do |t|
     t.integer "vault_id"
@@ -26,9 +35,11 @@ ActiveRecord::Schema.define(version: 2020_04_16_123544) do
 
   create_table "recordings", force: :cascade do |t|
     t.string "status"
-    t.string "recording_type"
-    t.integer "course_id"
-    t.index ["course_id"], name: "index_recordings_on_course_id"
+    t.integer "recordable_id"
+    t.string "recordable_type"
+    t.datetime "created_at", precision: 6
+    t.datetime "updated_at", precision: 6
+    t.index ["recordable_type", "recordable_id"], name: "index_recordings_on_recordable_type_and_recordable_id"
   end
 
   create_table "vaults", force: :cascade do |t|
@@ -36,5 +47,4 @@ ActiveRecord::Schema.define(version: 2020_04_16_123544) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "recordings", "courses"
 end

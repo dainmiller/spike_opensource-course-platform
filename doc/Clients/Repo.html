@@ -268,10 +268,9 @@
 
           
           <div class="method-source-code" id="contents-source">
-            <pre><span class="ruby-comment"># File app/models/clients/repo.rb, line 33</span>
+            <pre><span class="ruby-comment"># File app/models/clients/repo.rb, line 31</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">contents</span>
   <span class="ruby-ivar">@contents</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">fetch_and_parse</span> <span class="ruby-identifier">url</span>
-  <span class="ruby-ivar">@contents</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -302,7 +301,7 @@
 
           
           <div class="method-source-code" id="course-source">
-            <pre><span class="ruby-comment"># File app/models/clients/repo.rb, line 38</span>
+            <pre><span class="ruby-comment"># File app/models/clients/repo.rb, line 35</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">course</span>
   <span class="ruby-constant">SETTINGS</span>[<span class="ruby-value">:table</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -335,7 +334,7 @@
 
           
           <div class="method-source-code" id="save-source">
-            <pre><span class="ruby-comment"># File app/models/clients/repo.rb, line 42</span>
+            <pre><span class="ruby-comment"># File app/models/clients/repo.rb, line 39</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">save</span>
   <span class="ruby-constant">Course</span>.<span class="ruby-identifier">transaction</span> <span class="ruby-keyword">do</span>
     <span class="ruby-identifier">_save</span>
@@ -370,7 +369,7 @@
 
           
           <div class="method-source-code" id="save-21-source">
-            <pre><span class="ruby-comment"># File app/models/clients/repo.rb, line 48</span>
+            <pre><span class="ruby-comment"># File app/models/clients/repo.rb, line 45</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">save!</span>
   <span class="ruby-identifier">_save</span>
 <span class="ruby-keyword">end</span></pre>

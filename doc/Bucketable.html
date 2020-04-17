@@ -75,7 +75,7 @@
 
   <ul class="link-list" role="directory">
     
-    <li ><a href="#method-c-save">::save</a>
+    <li ><a href="#method-i-save_with">#save_with</a>
     
   </ul>
 </div>
@@ -90,6 +90,21 @@
 
   <section class="description">
     
+<p>The `Bucketable` concern adds a callback  that auto-creates a `Bucket`
+relationship to the class it&#39;s included in.</p>
+
+<h4 id="module-Bucketable-label-Example">Example<span><a href="#module-Bucketable-label-Example">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<pre class="ruby"><span class="ruby-identifier">course</span> = <span class="ruby-constant">Course</span>.<span class="ruby-identifier">create!</span> <span class="ruby-identifier">title</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;Rails Intro&#39;</span>
+  <span class="ruby-comment"># =&gt; &lt;Course id=1, title=&#39;Rails Intro&#39;&gt;</span>
+
+<span class="ruby-identifier">course</span>.<span class="ruby-identifier">bucket</span>
+  <span class="ruby-comment"># =&gt; &lt;Bucket id: 1, bucketable_id: 1, bucketable_type: &#39;Course&#39;&gt;</span>
+
+<span class="ruby-constant">Bucket</span>.<span class="ruby-identifier">find</span>(<span class="ruby-value">1</span>).<span class="ruby-identifier">bucketable</span>
+  <span class="ruby-comment"># =&gt; &lt;Course id=1, title=&#39;Rails Intro&#39;&gt;</span>
+</pre>
+
   </section>
 
   
@@ -105,17 +120,17 @@
     
 
     
-     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
        <header>
-         <h3>Public Class Methods</h3>
+         <h3>Public Instance Methods</h3>
        </header>
 
     
-      <div id="method-c-save" class="method-detail ">
+      <div id="method-i-save_with" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">save</span><span
-            class="method-args">()</span>
+          <span class="method-name">save_with</span><span
+            class="method-args">(entity)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -129,10 +144,10 @@
           
 
           
-          <div class="method-source-code" id="save-source">
-            <pre><span class="ruby-comment"># File app/models/concerns/bucketable.rb, line 8</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">save</span>
-  <span class="ruby-constant">Bucket</span>.<span class="ruby-identifier">create</span>        <span class="ruby-identifier">type</span><span class="ruby-operator">:</span> <span class="ruby-identifier">entity</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">table_name</span>
+          <div class="method-source-code" id="save_with-source">
+            <pre><span class="ruby-comment"># File app/models/concerns/bucketable.rb, line 25</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">save_with</span> <span class="ruby-identifier">entity</span>
+  <span class="ruby-constant">Bucket</span>.<span class="ruby-identifier">create</span>        <span class="ruby-identifier">bucketable</span><span class="ruby-operator">:</span> <span class="ruby-identifier">entity</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           

@@ -119,11 +119,33 @@
   
     <li><a href="./public/favicon_ico.html">favicon.ico</a>
   
+    <li><a href="./public/packs/js/application-bbe9c4a129ab949e0636_js.html">application-bbe9c4a129ab949e0636.js</a>
+  
+    <li><a href="./public/packs/js/application-bbe9c4a129ab949e0636_js_map.html">application-bbe9c4a129ab949e0636.js.map</a>
+  
+    <li><a href="./public/packs/manifest_json.html">manifest.json</a>
+  
     <li><a href="./public/robots_txt.html">robots</a>
+  
+    <li><a href="./tmp/cache/webpacker/babel-loader-node-modules/375345effd27f6088ab9a031c4549793_json.html">375345effd27f6088ab9a031c4549793.json</a>
+  
+    <li><a href="./tmp/cache/webpacker/babel-loader-node-modules/96a206d055d12205c817e7169eb7be46_json.html">96a206d055d12205c817e7169eb7be46.json</a>
+  
+    <li><a href="./tmp/cache/webpacker/babel-loader-node-modules/9f2e75cf963ee6562c935df3f04219cd_json.html">9f2e75cf963ee6562c935df3f04219cd.json</a>
+  
+    <li><a href="./tmp/cache/webpacker/babel-loader-node-modules/a7d69b81d490164b718583e8183a8cf3_json.html">a7d69b81d490164b718583e8183a8cf3.json</a>
+  
+    <li><a href="./tmp/cache/webpacker/babel-loader-node-modules/ba3301cff1bb0eea8aa2a87ef4e718a2_json.html">ba3301cff1bb0eea8aa2a87ef4e718a2.json</a>
+  
+    <li><a href="./tmp/cache/webpacker/babel-loader-node-modules/d0db1740cb98b7238f1d0869e423bdad_json.html">d0db1740cb98b7238f1d0869e423bdad.json</a>
+  
+    <li><a href="./tmp/cache/webpacker/last-compilation-digest-development.html">last-compilation-digest-development</a>
   
     <li><a href="./tmp/development_secret_txt.html">development_secret</a>
   
-    <li><a href="./tmtagsHistory.html">tmtagsHistory</a>
+    <li><a href="./tmp/pids/server_pid.html">server.pid</a>
+  
+    <li><a href="./tmp/restart_txt.html">restart</a>
   
     <li><a href="./yarn_lock.html">yarn.lock</a>
   
@@ -140,33 +162,54 @@
 <p><code>Concerns ONLY used for relations aren&#39;t included (but represented
 in tree)</code></p>
 
-<p><code>+ = Concern</code> | <code>- = Data model</code></p>
+<p><code>+ = Concern</code> | <code>- = Data model</code> | <code>* =
+implemented</code></p>
 <ul><li>
-<p><a href="Clients/Github.html">Clients::Github</a>  + +Clientable  +
-+Cacheable  + +Fetchable  + +Parseable</p>
+<p><a href="Clients/Github.html">Clients::Github</a> *  + +Clientable *  +
++Cacheable *  + +Fetchable *  + +Parseable *</p>
 </li><li>
-<p><a href="Clients/Repo.html">Clients::Repo</a></p>
+<p><a href="Clients/Repo.html">Clients::Repo</a> *</p>
 </li><li>
-<p><a href="Vault.html">Vault</a>  + +Bucketable</p>
+<p><a href="Vault.html">Vault</a> *  + +Bucketable</p>
 </li><li>
-<p>Catalog</p>
-</li><li>
-<p><a href="Course.html">Course</a>  + +Bucketable  + +Attendable  +
-+Completable</p>
+<p><a href="Course.html">Course</a> *  + +Recordable *  + +Bucketable  +
++Attendable  + +Completable  + +Rateable <em>(or thru bucket)</em>  +
++Reviewable <em>(or thru bucket)</em></p>
 </li><li>
 <p>Track  + +Completable</p>
 </li><li>
-<p>Lesson  + +Completable</p>
+<p>Lesson  + +Completable  + +Badgeable  + +Commentable</p>
 </li><li>
-<p>Bucket  + +Recordable</p>
+<p><a href="Bucket.html">Bucket</a>  + +Recordable  + +Searchable</p>
 </li><li>
-<p><a href="Recording.html">Recording</a>  + +Notifiable</p>
+<p><a href="Recording.html">Recording</a> *  + +Notifiable</p>
 </li><li>
-<p><a href="Notification.html">Notification</a>  - Mentionee  - Mentioner</p>
+<p><a href="Notification.html">Notification</a>  * <code>#.eavesdrop</code>  -
+Mentionee  - Mentioner</p>
 </li><li>
-<p>People  - User  - Attendee  - Guest</p>
+<p>People  - User  - Instructor  - Attendee  - Guest</p>
 </li><li>
 <p>Status</p>
+</li><li>
+<p>Badge</p>
+</li><li>
+<p>Achievement</p>
+</li><li>
+<p>Catalog  - Program <em>(Microbachelors/etc programs)</em>  - Topic
+<em>(engineering/arts/math/computer science/etc)</em>  - Specialization  -
+Group</p>
+</li><li>
+<p>Rating</p>
+</li><li>
+<p>Difficulty</p>
+</li><li>
+<p>Review</p>
+</li><li>
+<p>Degree</p>
+</li><li>
+<p>Comment</p>
+</li><li>
+<p>School <em>(actual universities)</em></p>
 </li></ul>
 </main>
 

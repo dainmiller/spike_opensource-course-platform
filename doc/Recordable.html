@@ -75,8 +75,6 @@
 
   <ul class="link-list" role="directory">
     
-    <li ><a href="#method-i-record">#record</a>
-    
     <li ><a href="#method-i-save_with">#save_with</a>
     
   </ul>
@@ -92,6 +90,34 @@
 
   <section class="description">
     
+<p>The `Recordable` concern adds a callback that  auto-creates a `Recording`
+relationship to the  class it&#39;s included in.</p>
+
+<h4 id="module-Recordable-label-Example">Example<span><a href="#module-Recordable-label-Example">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>Trigger the chain by creating a record  that creates a <a
+href="Bucket.html">Bucket</a> entity (course, vault)…</p>
+
+<pre class="ruby"><span class="ruby-identifier">course</span> = <span class="ruby-constant">Course</span>.<span class="ruby-identifier">create!</span> <span class="ruby-identifier">title</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;Rails Intro&#39;</span>
+  <span class="ruby-comment"># =&gt; &lt;Course id=1, title=&#39;Rails Intro&#39;&gt;</span>
+
+<span class="ruby-identifier">course</span>.<span class="ruby-identifier">bucket</span>.<span class="ruby-identifier">recording</span>
+<span class="ruby-constant">Bucket</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">recording</span>
+  <span class="ruby-comment"># =&gt; &lt;Recording id: 1, recordable_id: 1, recordable_type: &#39;Bucket&#39;&gt;</span>
+</pre>
+
+<p>&amp; if you call…</p>
+
+<pre class="ruby"><span class="ruby-constant">Recording</span>.<span class="ruby-identifier">find</span>(<span class="ruby-value">1</span>).<span class="ruby-identifier">recordable</span>
+  <span class="ruby-comment"># =&gt; &lt;Bucket id: 1, bucketable_id: 1, bucketable_type: &#39;Course&#39;&gt;</span>
+</pre>
+
+<p>&amp; then you can continue the chain…</p>
+
+<pre class="ruby"><span class="ruby-constant">Recording</span>.<span class="ruby-identifier">find</span>(<span class="ruby-value">1</span>).<span class="ruby-identifier">recordable</span>.<span class="ruby-identifier">bucketable</span>
+  <span class="ruby-comment"># =&gt; &lt;Course id=1, title=&#39;Rails Intro&#39;&gt;</span>
+</pre>
+
   </section>
 
   
@@ -113,54 +139,6 @@
        </header>
 
     
-      <div id="method-i-record" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">record</span><span
-            class="method-args">(entity)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          <p>The #.record API is meant to be included in  classes with a recording
-relationship.</p>
-
-<p>#.record is only meant to be used in `after_*` rails callbacks. This is why
-we pass `entity` as a  parameter, instead of using an `entity.record` API.</p>
-
-<h4 id="method-i-record-label-Example">Example<span><a href="#method-i-record-label-Example">&para;</a> <a href="#top">&uarr;</a></span></h4>
-
-<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">Course</span>
-  <span class="ruby-identifier">include</span> <span class="ruby-constant">Recordable</span>
-
-  <span class="ruby-identifier">after_commit</span> <span class="ruby-keyword">do</span>
-    <span class="ruby-identifier">record</span> <span class="ruby-keyword">self</span> <span class="ruby-comment"># =&gt; &lt;Recording type=&#39;Course&#39; status=&#39;active&#39;&gt;</span>
-  <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span>
-</pre>
-          
-          
-
-          
-          <div class="method-source-code" id="record-source">
-            <pre><span class="ruby-comment"># File app/models/concerns/recordable.rb, line 23</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">record</span> <span class="ruby-identifier">entity</span>
-  <span class="ruby-identifier">save_with</span> <span class="ruby-identifier">entity</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-
-        
-      </div>
-
-    
       <div id="method-i-save_with" class="method-detail ">
         
         <div class="method-heading">
@@ -180,10 +158,9 @@ we pass `entity` as a  parameter, instead of using an `entity.record` API.</p>
 
           
           <div class="method-source-code" id="save_with-source">
-            <pre><span class="ruby-comment"># File app/models/concerns/recordable.rb, line 28</span>
+            <pre><span class="ruby-comment"># File app/models/concerns/recordable.rb, line 36</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">save_with</span> <span class="ruby-identifier">entity</span>
-  <span class="ruby-identifier">entity</span>.<span class="ruby-identifier">recordings</span>.<span class="ruby-identifier">create</span>        <span class="ruby-identifier">recording_type</span><span class="ruby-operator">:</span> <span class="ruby-identifier">entity</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">table_name</span>,
-    <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;active&#39;</span>
+  <span class="ruby-constant">Recording</span>.<span class="ruby-identifier">create</span>        <span class="ruby-identifier">recordable</span><span class="ruby-operator">:</span> <span class="ruby-identifier">entity</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           

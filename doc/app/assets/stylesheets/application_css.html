@@ -52,15 +52,6 @@
   </div>
 
   
-<div class="nav-section">
-  <h3>Table of Contents</h3>
-
-  <ul class="link-list" role="directory">
-    <li><a href="#label-require_tree+.">require_tree .</a>
-    <li><a href="#label-require_self">require_self</a>
-  </ul>
-</div>
-
 
   <div id="project-metadata">
     <div id="fileindex-section" class="nav-section">
@@ -128,11 +119,33 @@
   
     <li><a href="../../../public/favicon_ico.html">favicon.ico</a>
   
+    <li><a href="../../../public/packs/js/application-bbe9c4a129ab949e0636_js.html">application-bbe9c4a129ab949e0636.js</a>
+  
+    <li><a href="../../../public/packs/js/application-bbe9c4a129ab949e0636_js_map.html">application-bbe9c4a129ab949e0636.js.map</a>
+  
+    <li><a href="../../../public/packs/manifest_json.html">manifest.json</a>
+  
     <li><a href="../../../public/robots_txt.html">robots</a>
+  
+    <li><a href="../../../tmp/cache/webpacker/babel-loader-node-modules/375345effd27f6088ab9a031c4549793_json.html">375345effd27f6088ab9a031c4549793.json</a>
+  
+    <li><a href="../../../tmp/cache/webpacker/babel-loader-node-modules/96a206d055d12205c817e7169eb7be46_json.html">96a206d055d12205c817e7169eb7be46.json</a>
+  
+    <li><a href="../../../tmp/cache/webpacker/babel-loader-node-modules/9f2e75cf963ee6562c935df3f04219cd_json.html">9f2e75cf963ee6562c935df3f04219cd.json</a>
+  
+    <li><a href="../../../tmp/cache/webpacker/babel-loader-node-modules/a7d69b81d490164b718583e8183a8cf3_json.html">a7d69b81d490164b718583e8183a8cf3.json</a>
+  
+    <li><a href="../../../tmp/cache/webpacker/babel-loader-node-modules/ba3301cff1bb0eea8aa2a87ef4e718a2_json.html">ba3301cff1bb0eea8aa2a87ef4e718a2.json</a>
+  
+    <li><a href="../../../tmp/cache/webpacker/babel-loader-node-modules/d0db1740cb98b7238f1d0869e423bdad_json.html">d0db1740cb98b7238f1d0869e423bdad.json</a>
+  
+    <li><a href="../../../tmp/cache/webpacker/last-compilation-digest-development.html">last-compilation-digest-development</a>
   
     <li><a href="../../../tmp/development_secret_txt.html">development_secret</a>
   
-    <li><a href="../../../tmtagsHistory.html">tmtagsHistory</a>
+    <li><a href="../../../tmp/pids/server_pid.html">server.pid</a>
+  
+    <li><a href="../../../tmp/restart_txt.html">restart</a>
   
     <li><a href="../../../yarn_lock.html">yarn.lock</a>
   
@@ -144,20 +157,88 @@
 
 <main role="main" aria-label="Page app/assets/stylesheets/application.css">
 
-<pre>This is a manifest file that&#39;ll be compiled into application.css, which will include all the files
-listed below.
+<pre> This is a manifest file that&#39;ll be compiled into application.css, which will include all the files
+ listed below.
 
-Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin&#39;s
-vendor/assets/stylesheets directory can be referenced here using a relative path.
+ Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin&#39;s
+ vendor/assets/stylesheets directory can be referenced here using a relative path.
 
-You&#39;re free to add application-wide styles to this file and they&#39;ll appear at the bottom of the
-compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
-files in this directory. Styles in this file should be added after the last require_* statement.
-It is generally better to create a new file per style scope.</pre>
+ You&#39;re free to add application-wide styles to this file and they&#39;ll appear at the bottom of the
+ compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ files in this directory. Styles in this file should be added after the last require_* statement.
+ It is generally better to create a new file per style scope.
 
-<h1 id="label-require_tree+.">require_tree .<span><a href="#label-require_tree+.">&para;</a> <a href="#top">&uarr;</a></span></h1>
+= require_tree .
+= require_self
 
-<h1 id="label-require_self">require_self<span><a href="#label-require_self">&para;</a> <a href="#top">&uarr;</a></span></h1>
+ CSS for elements</pre>
+
+<p>body, html {</p>
+
+<pre>background: rgb(253, 249, 246); 
+font-family: Helvetica, Arial, sans-serif;</pre>
+
+<p>} div { padding: 10px; }</p>
+
+<p>/* Utilities */ .left { float: left; } .right { float: right; }</p>
+
+<p>/* Layout */ .left-sidebar {</p>
+
+<pre>width: 65px;
+height: 1000px;
+background: rgb(255,235, 224);
+border-radius: 20px;
+border-top-right-radius: 0px;
+position: fixed;
+left: 0; top: 0;</pre>
+
+<p>}</p>
+
+<p>/* ====================</p>
+
+<h1 id="label-App+">App <span><a href="#label-App+">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<pre>==================== */</pre>
+
+<p>/* Homepage */ .center-app {</p>
+
+<pre>width: 75%;
+border-radius: 20px;
+border-top-left-radius: 0px;
+margin-left: 65px;</pre>
+
+<p>} .inner-center {</p>
+
+<pre>margin-left: 50px;</pre>
+
+<p>} .inner-center h1 {</p>
+
+<pre>font-size: 55px;
+font-weight: lighter;
+margin: 0;
+margin-bottom: 20px;</pre>
+
+<p>} .search {</p>
+
+<pre>width: 80%;
+font-size: 32px;
+outline: none;
+padding: 15px;
+color: #aaa;</pre>
+
+<p>}</p>
+
+<p>/* Courses */ .course {</p>
+
+<pre>      background: rgb(249, 186, 197);
+width: 80%;
+height: 160px;
+border-radius: 20px;
+padding: 30px;
+color: #fff;
+      margin-bottom: 20px;</pre>
+
+<p>}</p>
 </main>
 
 

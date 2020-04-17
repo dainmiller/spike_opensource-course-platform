@@ -1,3 +1,3 @@
 class Recording < ApplicationRecord
-  belongs_to :course, optional: true
+  belongs_to :recordable, polymorphic: true
 end

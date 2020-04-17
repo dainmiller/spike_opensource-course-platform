@@ -1,11 +1,7 @@
 class Course < ApplicationRecord
-  include Vaultable, Recordable, Bucketable, Attendees
+  include Bucketable, Attendees, Vaultable
 
   validates :title, presence: true
-  
-  after_create do
-    record self
-  end
   
   def to_s
     title
