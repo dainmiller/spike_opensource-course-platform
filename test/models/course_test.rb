@@ -23,5 +23,5 @@ class CourseTest < ActiveSupport::TestCase
       Course.new(thing: 't').save!
     }
   end
-  
+
 end

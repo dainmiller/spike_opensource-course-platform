@@ -12,6 +12,7 @@
 #
 #   Bucket.find(1).bucketable
 #     # => <Course id=1, title='Rails Intro'>
+#
 module Bucketable
   extend ActiveSupport::Concern
   

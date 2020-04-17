@@ -1,5 +1,5 @@
 class Course < ApplicationRecord
-  include Bucketable, Attendees, Vaultable
+  include Bucketable, Vaultable, Rateable
 
   validates :title, presence: true
   
@@ -8,4 +8,3 @@ class Course < ApplicationRecord
   end
   
 end
-

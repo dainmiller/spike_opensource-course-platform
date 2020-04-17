@@ -11,14 +11,16 @@
 		+ +Parseable *
 - Clients::Repo *
 - Vault *
-	+ +Bucketable
+	+ +Bucketable *
 - Course *
 	+ +Recordable *
-	+ +Bucketable
-	+ +Attendable
-	+ +Completable
-	+ +Rateable _(or thru bucket)_
-	+ +Reviewable _(or thru bucket)_
+	+ +Bucketable *
+	+ +Rateable *
+		- TODO: Add `rating` integer to Course table
+	+ +Effort [Difficulty]
+	+ +Reviewable 
+	+ +Attendable 
+	+ +Completable 
 - Track
 	+ +Completable
 - Lesson
@@ -26,8 +28,8 @@
 	+ +Badgeable
 	+ +Commentable
 - Bucket
-	+ +Recordable
-	+ +Searchable
+	+ +Recordable *
+	+ +Searchable *
 - Recording *
 	+ +Notifiable
 - Notification
@@ -47,8 +49,6 @@
 	- Topic _(engineering/arts/math/computer science/etc)_
 	- Specialization
 	- Group
-- Rating
-- Difficulty
 - Review
 - Degree
 - Comment

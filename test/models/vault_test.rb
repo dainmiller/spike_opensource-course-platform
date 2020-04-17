@@ -7,5 +7,4 @@ class VaultTest < ActiveSupport::TestCase
     assert vault.respond_to? :courses
   end
   
-  
 end
