@@ -15,12 +15,12 @@ module Searchable
     end
   end
   
-  def _find_all_by table: table, term: search_term
+  def _find_all_by table:, term:
     begin
       table
         .titleize
         .constantize
-        .where("title like %#{search_term}")
+        .where("title like %#{term}%")
     rescue
       []
     end
