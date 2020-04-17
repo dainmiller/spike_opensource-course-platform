@@ -2,11 +2,11 @@ module Searchable
   extend ActiveSupport::Concern
   
   included do
-    # 
+    #
     # ==== Example
     #
     #   Bucket.find_all_by params[:s]
-    #     # => [<Relation=[]>, <Relation=[]>]
+    #     # => [<Course=[]>, <Vault=[]>, etc]
     #
     def self.find_all_by search_term
       self.pluck(:bucketable_type).uniq.map { |table|
