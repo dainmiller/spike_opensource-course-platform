@@ -7,9 +7,9 @@ class CourseTest < ActiveSupport::TestCase
     assert course.respond_to? :vault
   end
   
-  test "has_many :recordings association" do
-    course = Course.create
-    assert_predicate course, :recordings
+  test "has_one :bucket association" do
+    course = Course.create! title: 't'
+    assert course.bucket
   end
 
   test "fails validation if there is no 'title' attribute" do
@@ -22,12 +22,6 @@ class CourseTest < ActiveSupport::TestCase
     assert_raise(ActiveRecord::UnknownAttributeError) { 
       Course.new(thing: 't').save!
     }
-  end
-
-  test "calls Recordable.for after the creation of a course object" do
-    course = Course.create title: 'not-important'
-    assert_not_nil Recording.last
-    assert_equal 'courses', Recording.last.recording_type
   end
   
 end
