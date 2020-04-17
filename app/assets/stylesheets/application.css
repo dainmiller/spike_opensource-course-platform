@@ -13,3 +13,64 @@
  *= require_tree .
  *= require_self
  */
+
+/* CSS for elements */
+body, html { 	
+	background: rgb(253, 249, 246); 
+	font-family: Helvetica, Arial, sans-serif;
+}
+div { padding: 10px; }
+
+/* Utilities */
+.left { float: left; }
+.right { float: right; }
+
+/* Layout */
+.left-sidebar { 
+	width: 65px;
+	height: 1000px;
+	background: rgb(255,235, 224);
+	border-radius: 20px;
+	border-top-right-radius: 0px;
+	position: fixed;
+	left: 0; top: 0;
+}
+
+/* ====================
+= App 
+ 	 ==================== */
+
+/* Homepage */
+.center-app {
+	width: 75%;
+	border-radius: 20px;
+	border-top-left-radius: 0px;
+	margin-left: 65px;
+}
+.inner-center {
+	margin-left: 50px;
+}
+.inner-center h1 {
+	font-size: 55px;
+	font-weight: lighter;
+	margin: 0;
+	margin-bottom: 20px;
+}
+.search {
+  width: 80%;
+  font-size: 32px;
+  outline: none;
+  padding: 15px;
+  color: #aaa;
+}
+
+/* Courses */
+.course {
+	background: rgb(249, 186, 197);
+  width: 80%;
+  height: 160px;
+  border-radius: 20px;
+  padding: 30px;
+  color: #fff;
+	margin-bottom: 20px;
+}
