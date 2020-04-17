@@ -6,7 +6,7 @@ module Attendees
     
     # API interface for people that have 
     # a relationship to entities that allow for 'attendance'. 
-    #
+    # 
     # ==== Example
     #
     #   course = Course.create

@@ -15,14 +15,18 @@
 - Course *
 	+ +Recordable *
 	+ +Bucketable *
-	+ +Rateable *
+	+ +Rateable * 
 		- TODO: Add `rating` integer to Course table
-	+ +Effort [Difficulty]
-	+ +Reviewable 
+	+ +Effort *
+		- TODO: Add `effort/difficulty` integer to Course table
+	- Commentable
+- Comment
+	+ +Reviewable
+- Review
 	+ +Attendable 
+	+ +Completable   
+- Track 
 	+ +Completable 
-- Track
-	+ +Completable
 - Lesson
 	+ +Completable
 	+ +Badgeable
@@ -49,7 +53,6 @@
 	- Topic _(engineering/arts/math/computer science/etc)_
 	- Specialization
 	- Group
-- Review
 - Degree
 - Comment
 - School _(actual universities)_

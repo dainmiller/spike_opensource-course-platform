@@ -2,7 +2,7 @@ module Rateable
   extend ActiveSupport::Concern
   
   def rate_with rating
-    self.update \
+    update! \
       rating: rating
   end
   
