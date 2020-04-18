@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_17_040442) do
+ActiveRecord::Schema.define(version: 2020_04_18_084716) do
 
   create_table "buckets", force: :cascade do |t|
     t.string "status"
@@ -19,6 +19,12 @@ ActiveRecord::Schema.define(version: 2020_04_17_040442) do
     t.integer "bucketable_id"
     t.string "bucketable_type"
     t.index ["bucketable_type", "bucketable_id"], name: "index_buckets_on_bucketable_type_and_bucketable_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "bucket_id", null: false
+    t.text "body"
+    t.index ["bucket_id"], name: "index_comments_on_bucket_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -47,4 +53,5 @@ ActiveRecord::Schema.define(version: 2020_04_17_040442) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "comments", "buckets"
 end
