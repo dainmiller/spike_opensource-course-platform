@@ -10,7 +10,7 @@ class CoursesController < ApplicationController
     @course.rate_with params[:rating]
     respond_with @course
   end
-
+  
   def effort
     @course = Course.find params[:id]
     @course.estimate_effort params[:effort]

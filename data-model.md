@@ -19,12 +19,13 @@
 		- TODO: Add `rating` integer to Course table
 	+ +Effort *
 		- TODO: Add `effort/difficulty` integer to Course table
-	- Commentable
+	- Commentable 
+	+ +Attendable
+	+ +Completable
 - Comment
 	+ +Reviewable
 - Review
-	+ +Attendable 
-	+ +Completable   
+
 - Track 
 	+ +Completable 
 - Lesson
