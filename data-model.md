@@ -26,10 +26,11 @@
 	+ +Searchable *
 	+ +Commentable *
 - Comment *
-	+ +Reviewable
-- Review
+- Review < Comment
+- Status
+	- Completeable
 - Track
-	+ +Completable 
+	+ +Completable
 - Lesson
 	+ +Completable
 	+ +Badgeable
@@ -45,7 +46,6 @@
 	- Instructor
 	- Attendee
 	- Guest
-- Status
 - Badge
 - Achievement
 - Catalog

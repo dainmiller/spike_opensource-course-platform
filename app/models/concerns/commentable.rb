@@ -4,4 +4,5 @@ module Commentable
   included do
     has_many :comments
   end
+
 end
