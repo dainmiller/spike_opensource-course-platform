@@ -26,7 +26,7 @@
 	+ +Searchable *
 	+ +Commentable *
 - Comment *
-- Review < Comment
+- Review < Comment *
 - Status
 	- Completeable
 - Track
