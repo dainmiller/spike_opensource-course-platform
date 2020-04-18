@@ -48,9 +48,9 @@ module Clients
     end
 
     def repos
-      @_repos ||= cache_and_fetch_and_parse(REPOS).map { |repo|
+      @_repos ||= fetch_and_parse_and_cache(REPOS).map do |repo|
         Clients::Repo.new repo
-      }
+      end
     end
 
     def each

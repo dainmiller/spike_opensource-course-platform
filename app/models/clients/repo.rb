@@ -37,9 +37,7 @@ class Clients::Repo
   end
   
   def save
-    Course.transaction do
-      _save
-    end
+    Course.transaction { begin _save ; rescue ; end }
   end
   
   def save!

@@ -9,13 +9,13 @@ module Clientable
       parse fetch url
     end
     
-    def cache_and_fetch url
+    def fetch_and_cache url
       cache fetch url unless file_exists?
     end
     
-    def cache_and_fetch_and_parse url
-      cache_and_fetch url ; parse File.read('org.json')
+    def fetch_and_parse_and_cache url
+      fetch_and_cache url ; parse File.read('org.json')
     end
-    
+
   end
 end
