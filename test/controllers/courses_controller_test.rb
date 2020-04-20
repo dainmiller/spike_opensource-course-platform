@@ -12,4 +12,11 @@ class CoursesControllerTest < ActionController::TestCase
     assert_includes response.body, @course.title
   end
   
+  def test_rating
+    skip "skip rating until rating added to course domain model"
+  end
+  
+  def test_effort
+    skip "skip effort until effort added to course domain model"
+  end
 end
