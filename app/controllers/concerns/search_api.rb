@@ -1,4 +1,4 @@
-module SearchableApi
+module SearchApi
   extend ActiveSupport::Concern
   
   # ==== Endpoint
@@ -11,13 +11,21 @@ module SearchableApi
   #   Bucket.find_all_by search_term
   #     # => [<Course=[]>, <Vault=[]>, etc]
   #
+  # or you can use the cleaner Search API
+  # 
+  #   Search.for search_term
+  #     # => [<Course=[]>, <Vault=[]>, etc]
   def search
-    @results = Bucket.find_all_by search_term
+    @results = Search.for search_term
+    respond_to do |format|
+      format.json
+    end
   end
   
   private
     def search_term
-      URI.encode params[:for] || params[:s]
+      terms = (params[:for] or params[:s])
+      URI.encode terms unless terms.nil?
     end
 
 end
