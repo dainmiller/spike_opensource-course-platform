@@ -8,4 +8,12 @@ class Course < ApplicationRecord
     title
   end
 
+  def comments
+    bucket.comments
+  end
+
+  def reviews
+    bucket.reviews
+  end
+  
 end
