@@ -23,29 +23,26 @@ class CourseRecommender
     end
     
     def enqueue_email_for course
-      CourseRecommendationMailerJob.perform_later( 
-        user.id, 
+      CourseRecommendationMailerJob.perform_later \
+        user.id,
         course.id
-      )
     end
     
     def suggestor
-      ContentSuggestor.new(
+      ContentSuggestor.new \
         user: user,
         recommendables: recommendable_courses,
-        recommended: previously_recommended,
-      )
+        recommended: previously_recommended
     end
     
     def previously_recommended
-      ContentRecommendation
+      ContentRecommendation \
         .where(user: user)
-        .map(&:recommendable)
+        .map &:recommendable
     end
     
     def log_no_further_recs user
-      Rails.logger.warn(
-        "No further recommendable videos for user: #{user.id} <#{user.email}>",
-      )
+      Rails.logger.warn \
+        "No further recommendable videos for user: #{user.id} <#{user.email}>"
     end
 end
