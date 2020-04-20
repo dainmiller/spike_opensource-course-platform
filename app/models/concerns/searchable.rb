@@ -3,7 +3,7 @@ module Searchable
   
   included do
     scope :related_tables, -> {
-      pluck(:bucketable_type)
+      pluck(:bucketable_type).uniq
     }
     
     # ==== Example
