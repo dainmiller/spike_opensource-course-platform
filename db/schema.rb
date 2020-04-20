@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_18_084716) do
+ActiveRecord::Schema.define(version: 2020_04_20_230732) do
 
   create_table "buckets", force: :cascade do |t|
     t.string "status"
@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(version: 2020_04_18_084716) do
     t.integer "bucket_id", null: false
     t.text "body"
     t.index ["bucket_id"], name: "index_comments_on_bucket_id"
+  end
+
+  create_table "content_recommendations", force: :cascade do |t|
+    t.string "recommendable_type"
+    t.integer "recommendable_id"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recommendable_type", "recommendable_id"], name: "index_content_recommendations_on_recommendable_and_user"
+    t.index ["user_id"], name: "index_content_recommendations_on_user_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -48,10 +58,34 @@ ActiveRecord::Schema.define(version: 2020_04_18_084716) do
     t.index ["recordable_type", "recordable_id"], name: "index_recordings_on_recordable_type_and_recordable_id"
   end
 
+  create_table "statuses", force: :cascade do |t|
+    t.integer "bucket_id", null: false
+    t.integer "user_id", null: false
+    t.string "state"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["bucket_id"], name: "index_statuses_on_bucket_id"
+    t.index ["user_id"], name: "index_statuses_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
   create_table "vaults", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "comments", "buckets"
+  add_foreign_key "statuses", "buckets"
+  add_foreign_key "statuses", "users"
 end
