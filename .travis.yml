@@ -1,8 +1,22 @@
 language: ruby
 rvm:
  - 2.6.3
+cache:
+  bundler: true
+  yarn: true
+  directories:
+    - node_modules
 before_install:
 - gem update bundler
-- RAILS_ENV=test bundle exec rails webpacker:compile
+install:
+- bundle install
+- nvm install node
+- node -v
+- npm i -g yarn
+- yarn install
+skip_cleanup: true
 script:
+- yarn test
 - bundle exec rake test
+after_success:
+  - bundle exec rake assets:precompile
