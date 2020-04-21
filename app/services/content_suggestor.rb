@@ -1,4 +1,5 @@
 class ContentSuggestor
+  NEXT_UP_IN_UNRECOMMENDED_LIST = 1
   
   def initialize recommendables:, user:, recommended:
     @recommendables = recommendables
@@ -7,7 +8,7 @@ class ContentSuggestor
   end
   
   def next_up
-    each
+    unrecommended.take NEXT_UP_IN_UNRECOMMENDED_LIST
   end
   
   def each

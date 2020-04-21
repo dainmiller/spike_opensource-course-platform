@@ -6,6 +6,7 @@ class ContentRecommendationTest < ActiveSupport::TestCase
     user = User.create
     bucket = Bucket.create
     ContentRecommendation.create recommendable: bucket
+    
     assert user.content_recommendations
     assert ContentRecommendation.count, 1
   end
