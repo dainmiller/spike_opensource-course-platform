@@ -4,7 +4,8 @@ class StatusFinder
     @user = user
   end
   
-  def current_status_for completeable
-    Status.last
-  end
+  # def current_status_for completeable
+  #   Status.last
+  # end
+  
 end

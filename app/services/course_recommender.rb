@@ -7,8 +7,8 @@ class CourseRecommender
   
   def recommend
     suggestor.each do |course|
-        create_recommendation course
-        enqueue_email_for course
+      create_recommendation course
+      enqueue_email_for course
     end
   end
   
@@ -16,7 +16,14 @@ class CourseRecommender
   
     attr_reader :user, :recommendable_courses
   
-    def create_recommendation
+    def suggestor
+      ContentSuggestor.new \
+        user: user,
+        recommendables: recommendable_courses,
+        recommended: previously_recommended
+    end
+    
+    def create_recommendation course
       ContentRecommendation.create \
         user: user,
         recommendable: course
@@ -27,14 +34,7 @@ class CourseRecommender
         user.id,
         course.id
     end
-    
-    def suggestor
-      ContentSuggestor.new \
-        user: user,
-        recommendables: recommendable_courses,
-        recommended: previously_recommended
-    end
-    
+
     def previously_recommended
       ContentRecommendation \
         .where(user: user)
@@ -45,4 +45,5 @@ class CourseRecommender
       Rails.logger.warn \
         "No further recommendable videos for user: #{user.id} <#{user.email}>"
     end
+
 end

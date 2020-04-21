@@ -5,4 +5,5 @@ class Status < ApplicationRecord
   def unstarted?
     false
   end
+  
 end

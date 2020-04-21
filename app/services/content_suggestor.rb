@@ -7,26 +7,29 @@ class ContentSuggestor
   end
   
   def next_up
-    first_unseen_recommendable
+    each
   end
   
   def each
-    unrecommended_recommendables
+    unrecommended.each { |recommendable| 
+      yield recommendable
+    }
   end
   
   private
   
     attr_reader :recommendables, :recommended, :status_finder
     
-    def unrecommended_recommendables
+    def unrecommended
       recommendables - recommended
     end
     
-    def first_unseen_recommendable
-      unrecommended_recommendables.detect do |recommendable|
-        status_finder
-          .current_status_for(recommendable)
-          .unstarted?
-      end
-    end
+    # def first_unseen_recommendable
+    #   unrecommended_recommendables.detect do |recommendable|
+    #     status_finder
+    #       .current_status_for(recommendable)
+    #       .unstarted?
+    #   end
+    # end
+
 end
