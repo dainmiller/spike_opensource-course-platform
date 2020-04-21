@@ -2,7 +2,6 @@
 
 [![Build Status](https://travis-ci.org/thoughtfruit/OpenCourse.svg?branch=master)](https://travis-ci.org/thoughtfruit/OpenCourse)
 [![Maintainability](https://api.codeclimate.com/v1/badges/e070221ff88efa70aa9b/maintainability)](https://codeclimate.com/github/thoughtfruit/OpenCourse/maintainability)
-Gitter chat
 [![Gitter chat](https://badges.gitter.im/thoughtfruity/general.png)](https://gitter.im/thoughtfruity/general "Gitter chat")
 
 OpenCourse is a **free, open-source course platform application** based on [OpenProtocol]().
