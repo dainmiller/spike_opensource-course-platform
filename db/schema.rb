@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_20_230732) do
+ActiveRecord::Schema.define(version: 2020_04_21_103740) do
 
   create_table "buckets", force: :cascade do |t|
     t.string "status"
@@ -49,6 +49,15 @@ ActiveRecord::Schema.define(version: 2020_04_20_230732) do
     t.index ["vault_id"], name: "index_courses_on_vault_id"
   end
 
+  create_table "lessons", force: :cascade do |t|
+    t.text "title"
+    t.text "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "track_id"
+    t.index ["track_id"], name: "index_lessons_on_track_id"
+  end
+
   create_table "recordings", force: :cascade do |t|
     t.string "status"
     t.integer "recordable_id"
@@ -66,6 +75,14 @@ ActiveRecord::Schema.define(version: 2020_04_20_230732) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["bucket_id"], name: "index_statuses_on_bucket_id"
     t.index ["user_id"], name: "index_statuses_on_user_id"
+  end
+
+  create_table "tracks", force: :cascade do |t|
+    t.integer "course_id", null: false
+    t.text "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_tracks_on_course_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -88,4 +105,5 @@ ActiveRecord::Schema.define(version: 2020_04_20_230732) do
   add_foreign_key "comments", "buckets"
   add_foreign_key "statuses", "buckets"
   add_foreign_key "statuses", "users"
+  add_foreign_key "tracks", "courses"
 end
