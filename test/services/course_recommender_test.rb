@@ -4,7 +4,7 @@ class CourseRecommenderTest < ActiveSupport::TestCase
   
   def test_creates_a_recommendation
     user = User.create
-    course = Course.create
+    course = Course.creates
     
     CourseRecommender.new(
       user: user,
