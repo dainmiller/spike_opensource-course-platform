@@ -4,5 +4,4 @@ rvm:
 before_install:
 - gem update bundler
 script:
-- bundle exec rake build
-- bundle exec rake builddoc
+- bundle exec rake test
