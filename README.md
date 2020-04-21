@@ -4,11 +4,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/e070221ff88efa70aa9b/maintainability)](https://codeclimate.com/github/thoughtfruit/OpenCourse/maintainability)
 [![Gitter chat](https://badges.gitter.im/thoughtfruity/general.png)](https://gitter.im/thoughtfruity/general "Gitter chat")
 
-OpenCourse is a **free, open-source course platform application** based on [OpenProtocol]().
-
-Click below to **learn more** in a video:
-
-![Screenshot](https://blog.joinmastodon.org/2018/06/why-activitypub-is-the-future/ezgif-2-60f1b00403.gif)
+OpenCourse is a **free, open-source course platform application** based on [OpenCourseProtocol]().
 
 ## Navigation
 
