@@ -9,7 +9,6 @@ OpenCourse is a **free, open-source course platform application** based on [Open
 ## Navigation
 
 - [Project homepage 🐘]()
-- [Support the development via Patreon][patreon]
 - [View sponsors]()
 - [Blog]()
 - [Documentation]()
