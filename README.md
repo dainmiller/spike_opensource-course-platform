@@ -1,8 +1,8 @@
 # OpenCourse
 
 [![Build Status](https://travis-ci.org/thoughtfruit/OpenCourse.svg?branch=master)](https://travis-ci.org/thoughtfruit/OpenCourse)
-[![Maintainability](https://api.codeclimate.com/v1/badges/d364e87c4a6e974dac96/maintainability)](https://codeclimate.com/github/dainmiller/OpenCourse/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/d364e87c4a6e974dac96/test_coverage)](https://codeclimate.com/github/dainmiller/OpenCourse/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/d364e87c4a6e974dac96/maintainability)](https://codeclimate.com/github/thoughtfruit/OpenCourse/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/d364e87c4a6e974dac96/test_coverage)](https://codeclimate.com/github/thoughtfruit/OpenCourse/test_coverage)
 
 OpenCourse is a **free, open-source course platform application** based on [OpenProtocol]().
 
