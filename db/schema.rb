@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_21_103740) do
+ActiveRecord::Schema.define(version: 2020_04_23_184437) do
 
   create_table "buckets", force: :cascade do |t|
     t.string "status"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2020_04_21_103740) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "track_id"
+    t.text "url"
     t.index ["track_id"], name: "index_lessons_on_track_id"
   end
 
@@ -82,6 +83,7 @@ ActiveRecord::Schema.define(version: 2020_04_21_103740) do
     t.text "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "url"
     t.index ["course_id"], name: "index_tracks_on_course_id"
   end
 

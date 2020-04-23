@@ -1,10 +1,11 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.3'
+# ruby '2.6.3'
 
+gem 'redcarpet'
 gem 'rdoc'
-gem 'bundler', '>= 2'
+gem 'bundler'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
 gem 'sqlite3', '~> 1.4'
 gem 'puma', '~> 4.1'
@@ -23,6 +24,8 @@ group :development, :test do
 end
 
 group :development do
+  gem 'guard'
+  gem 'guard-minitest'
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'

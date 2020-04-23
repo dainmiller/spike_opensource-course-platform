@@ -14,7 +14,7 @@
 			<h1 id="courses">Courses</h1>
 			<% @courses.each do |course| %>
 				<div class="course course-<%= course.id %>">
-					<%= course.title %>
+					<a href="/courses/<%= course.id %>"><%= course.title %></a>
 					<div class="course-lessons">25 Lessons</div>					
 				</div>
 			<% end %>

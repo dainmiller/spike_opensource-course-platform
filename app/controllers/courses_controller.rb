@@ -4,7 +4,11 @@ class CoursesController < ApplicationController
   respond_to :html, :json
   
   def index
-    @courses ||= Course.all
+    @courses ||= Course.lazy_load_courses.all
+  end
+  
+  def show
+    @course ||= Course.find params[:id]
   end
   
 end

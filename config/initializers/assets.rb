@@ -12,3 +12,9 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
+
+require Rails.root.join("app/presenters", "markdown_template_handler")
+
+ActionView::Template.register_template_handler(:md, MarkdownTemplateHandler.new)
+
+$markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, fenced_code_blocks: true)

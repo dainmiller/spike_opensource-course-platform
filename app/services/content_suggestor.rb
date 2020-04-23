@@ -12,9 +12,9 @@ class ContentSuggestor
   end
 
   def each
-    unrecommended.each { |recommendable| 
+    unrecommended.each do |recommendable|
       yield recommendable
-    }
+    end
   end
 
   private

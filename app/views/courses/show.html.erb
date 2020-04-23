@@ -1,0 +1,37 @@
+<div class="center-app left">
+	
+	<div class="inner-center">
+		
+		<div class="tracks">
+			
+			<h1><%= @course.title %></h1>
+			
+			<p>
+				<%= @course.tracks.count %> Tracks
+			</p>
+			
+
+			<ul>
+				<% @course.tracks.each do |track| %>			
+	
+					<li>
+						<%= link_to track.title, "/courses/#{@course.id}/tracks/#{track.id}" %>
+						<ul>
+						<% track.lessons.each do |lesson| %>
+							<li>
+								<%= link_to lesson.title, "/courses/#{@course.id}/lessons/#{lesson.id}" %>
+							</li>
+						<% end %>
+						</ul>
+					</li>
+		
+				<% end %>
+			</ul>
+
+			
+		</div>
+		
+	</div>
+	
+</div>
+
