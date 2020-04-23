@@ -11,8 +11,11 @@
   var index_rel_prefix = "./";
 </script>
 
-<script src="./js/jquery.js"></script>
-<script src="./js/darkfish.js"></script>
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
 
 <link href="./css/fonts.css" rel="stylesheet">
 <link href="./css/rdoc.css" rel="stylesheet">
@@ -56,26 +59,7 @@
   <div id="class-metadata">
     
     
-    <div id="includes-section" class="nav-section">
-  <h3>Included Modules</h3>
-
-  <ul class="link-list">
-  
-  
-    <li><a class="include" href="Fetchable.html">Fetchable</a>
-  
-  
-  
-    <li><a class="include" href="Parseable.html">Parseable</a>
-  
-  
-  
-    <li><a class="include" href="Cacheable.html">Cacheable</a>
-  
-  
-  </ul>
-</div>
-
+    
     <div id="extends-section" class="nav-section">
   <h3>Extended With Modules</h3>
 
@@ -94,11 +78,11 @@
 
   <ul class="link-list" role="directory">
     
-    <li ><a href="#method-i-cache_and_fetch">#cache_and_fetch</a>
-    
-    <li ><a href="#method-i-cache_and_fetch_and_parse">#cache_and_fetch_and_parse</a>
+    <li ><a href="#method-i-fetch_and_cache">#fetch_and_cache</a>
     
     <li ><a href="#method-i-fetch_and_parse">#fetch_and_parse</a>
+    
+    <li ><a href="#method-i-fetch_and_parse_and_cache">#fetch_and_parse_and_cache</a>
     
   </ul>
 </div>
@@ -116,8 +100,6 @@
   </section>
 
   
-  
-  
   <section id="5Buntitled-5D" class="documentation-section">
     
 
@@ -134,10 +116,10 @@
        </header>
 
     
-      <div id="method-i-cache_and_fetch" class="method-detail ">
+      <div id="method-i-fetch_and_cache" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">cache_and_fetch</span><span
+          <span class="method-name">fetch_and_cache</span><span
             class="method-args">(url)</span>
           
           <span class="method-click-advice">click to toggle source</span>
@@ -152,43 +134,10 @@
           
 
           
-          <div class="method-source-code" id="cache_and_fetch-source">
+          <div class="method-source-code" id="fetch_and_cache-source">
             <pre><span class="ruby-comment"># File app/models/concerns/clientable.rb, line 12</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">cache_and_fetch</span> <span class="ruby-identifier">url</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">fetch_and_cache</span> <span class="ruby-identifier">url</span>
   <span class="ruby-identifier">cache</span> <span class="ruby-identifier">fetch</span> <span class="ruby-identifier">url</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">file_exists?</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-
-        
-      </div>
-
-    
-      <div id="method-i-cache_and_fetch_and_parse" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">cache_and_fetch_and_parse</span><span
-            class="method-args">(url)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="cache_and_fetch_and_parse-source">
-            <pre><span class="ruby-comment"># File app/models/concerns/clientable.rb, line 16</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">cache_and_fetch_and_parse</span> <span class="ruby-identifier">url</span>
-  <span class="ruby-identifier">cache_and_fetch</span> <span class="ruby-identifier">url</span> ; <span class="ruby-identifier">parse</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-string">&#39;org.json&#39;</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -220,8 +169,41 @@
           
           <div class="method-source-code" id="fetch_and_parse-source">
             <pre><span class="ruby-comment"># File app/models/concerns/clientable.rb, line 8</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">fetch_and_parse</span> <span class="ruby-identifier">url</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">fetch_and_parse</span> <span class="ruby-identifier">url</span>
   <span class="ruby-identifier">parse</span> <span class="ruby-identifier">fetch</span> <span class="ruby-identifier">url</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-fetch_and_parse_and_cache" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">fetch_and_parse_and_cache</span><span
+            class="method-args">(url)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="fetch_and_parse_and_cache-source">
+            <pre><span class="ruby-comment"># File app/models/concerns/clientable.rb, line 16</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">fetch_and_parse_and_cache</span> <span class="ruby-identifier">url</span>
+  <span class="ruby-identifier">fetch_and_cache</span> <span class="ruby-identifier">url</span> ; <span class="ruby-identifier">parse</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-string">&#39;org.json&#39;</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -240,8 +222,8 @@
 
 
 <footer id="validator-badges" role="contentinfo">
-  <p><a href="http://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://rdoc.github.io/rdoc">RDoc</a> 5.1.0.
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

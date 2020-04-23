@@ -11,8 +11,11 @@
   var index_rel_prefix = "./";
 </script>
 
-<script src="./js/jquery.js"></script>
-<script src="./js/darkfish.js"></script>
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
 
 <link href="./css/fonts.css" rel="stylesheet">
 <link href="./css/rdoc.css" rel="stylesheet">
@@ -91,6 +94,8 @@
     
     <li ><a href="#method-i-lockfile_version">#lockfile_version</a>
     
+    <li ><a href="#method-i-parallel_tests">#parallel_tests</a>
+    
     <li ><a href="#method-i-system-21">#system!</a>
     
   </ul>
@@ -108,8 +113,6 @@
     
   </section>
 
-  
-  
   
   <section id="5Buntitled-5D" class="documentation-section">
     
@@ -165,8 +168,8 @@
 
           
           <div class="method-source-code" id="activate_bundler-source">
-            <pre><span class="ruby-comment"># File bin/bundle, line 76</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">activate_bundler</span>(<span class="ruby-identifier">bundler_version</span>)
+            <pre><span class="ruby-comment"># File bin/bundle, line 77</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">activate_bundler</span>(<span class="ruby-identifier">bundler_version</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-constant">Gem</span><span class="ruby-operator">::</span><span class="ruby-constant">Version</span>.<span class="ruby-identifier">correct?</span>(<span class="ruby-identifier">bundler_version</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">Gem</span><span class="ruby-operator">::</span><span class="ruby-constant">Version</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">bundler_version</span>).<span class="ruby-identifier">release</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">Gem</span><span class="ruby-operator">::</span><span class="ruby-constant">Version</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;2.0&quot;</span>)
     <span class="ruby-identifier">bundler_version</span> = <span class="ruby-string">&quot;&lt; 2&quot;</span>
   <span class="ruby-keyword">end</span>
@@ -210,11 +213,11 @@
 
           
           <div class="method-source-code" id="activation_error_handling-source">
-            <pre><span class="ruby-comment"># File bin/bundle, line 92</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">activation_error_handling</span>
+            <pre><span class="ruby-comment"># File bin/bundle, line 93</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">activation_error_handling</span>
   <span class="ruby-keyword">yield</span>
   <span class="ruby-keyword">nil</span>
-<span class="ruby-keyword">rescue</span> <span class="ruby-constant">StandardError</span>, <span class="ruby-constant">LoadError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+<span class="ruby-keyword">rescue</span> <span class="ruby-constant">StandardError</span>, <span class="ruby-constant">LoadError</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">e</span>
   <span class="ruby-identifier">e</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -246,8 +249,8 @@
 
           
           <div class="method-source-code" id="bundler_version-source">
-            <pre><span class="ruby-comment"># File bin/bundle, line 62</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">bundler_version</span>
+            <pre><span class="ruby-comment"># File bin/bundle, line 63</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">bundler_version</span>
   <span class="ruby-ivar">@bundler_version</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword">begin</span>
     <span class="ruby-identifier">env_var_version</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">cli_arg_version</span> <span class="ruby-operator">||</span>
       <span class="ruby-identifier">lockfile_version</span> <span class="ruby-operator">||</span> <span class="ruby-node">&quot;#{Gem::Requirement.default}.a&quot;</span>
@@ -282,8 +285,8 @@
 
           
           <div class="method-source-code" id="cli_arg_version-source">
-            <pre><span class="ruby-comment"># File bin/bundle, line 23</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">cli_arg_version</span>
+            <pre><span class="ruby-comment"># File bin/bundle, line 24</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">cli_arg_version</span>
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">invoked_as_script?</span> <span class="ruby-comment"># don&#39;t want to hijack other binstubs</span>
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-string">&quot;update&quot;</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-constant">ARGV</span>.<span class="ruby-identifier">first</span> <span class="ruby-operator">||</span> <span class="ruby-string">&quot; &quot;</span>) <span class="ruby-comment"># must be running `bundle update`</span>
   <span class="ruby-identifier">bundler_version</span> = <span class="ruby-keyword">nil</span>
@@ -292,7 +295,7 @@
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">update_index</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">update_index</span>.<span class="ruby-identifier">succ</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">a</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">Gem</span><span class="ruby-operator">::</span><span class="ruby-constant">Version</span><span class="ruby-operator">::</span><span class="ruby-constant">ANCHORED_VERSION_PATTERN</span>
       <span class="ruby-identifier">bundler_version</span> = <span class="ruby-identifier">a</span>
     <span class="ruby-keyword">end</span>
-    <span class="ruby-keyword">next</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">a</span> <span class="ruby-operator">=~</span> <span class="ruby-node">/\A--bundler(?:[= ](#{Gem::Version::VERSION_PATTERN}))?\z/</span>
+    <span class="ruby-keyword">next</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">a</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/\A--bundler(?:[= ](#{Gem::Version::VERSION_PATTERN}))?\z/</span>
     <span class="ruby-identifier">bundler_version</span> = <span class="ruby-node">$1</span> <span class="ruby-operator">||</span> <span class="ruby-string">&quot;&gt;= 0.a&quot;</span>
     <span class="ruby-identifier">update_index</span> = <span class="ruby-identifier">i</span>
   <span class="ruby-keyword">end</span>
@@ -327,8 +330,8 @@
 
           
           <div class="method-source-code" id="env_var_version-source">
-            <pre><span class="ruby-comment"># File bin/bundle, line 19</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">env_var_version</span>
+            <pre><span class="ruby-comment"># File bin/bundle, line 20</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">env_var_version</span>
   <span class="ruby-constant">ENV</span>[<span class="ruby-string">&quot;BUNDLER_VERSION&quot;</span>]
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -360,8 +363,8 @@
 
           
           <div class="method-source-code" id="gemfile-source">
-            <pre><span class="ruby-comment"># File bin/bundle, line 39</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">gemfile</span>
+            <pre><span class="ruby-comment"># File bin/bundle, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">gemfile</span>
   <span class="ruby-identifier">gemfile</span> = <span class="ruby-constant">ENV</span>[<span class="ruby-string">&quot;BUNDLE_GEMFILE&quot;</span>]
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">gemfile</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">gemfile</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">gemfile</span>.<span class="ruby-identifier">empty?</span>
 
@@ -396,8 +399,8 @@
 
           
           <div class="method-source-code" id="invoked_as_script-3F-source">
-            <pre><span class="ruby-comment"># File bin/bundle, line 15</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">invoked_as_script?</span>
+            <pre><span class="ruby-comment"># File bin/bundle, line 16</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">invoked_as_script?</span>
   <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">$0</span>) <span class="ruby-operator">==</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-keyword">__FILE__</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -429,8 +432,8 @@
 
           
           <div class="method-source-code" id="load_bundler-21-source">
-            <pre><span class="ruby-comment"># File bin/bundle, line 69</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">load_bundler!</span>
+            <pre><span class="ruby-comment"># File bin/bundle, line 70</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">load_bundler!</span>
   <span class="ruby-constant">ENV</span>[<span class="ruby-string">&quot;BUNDLE_GEMFILE&quot;</span>] <span class="ruby-operator">||=</span> <span class="ruby-identifier">gemfile</span>
 
   <span class="ruby-comment"># must dup string for RG &lt; 1.8 compatibility</span>
@@ -465,8 +468,8 @@
 
           
           <div class="method-source-code" id="lockfile-source">
-            <pre><span class="ruby-comment"># File bin/bundle, line 46</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">lockfile</span>
+            <pre><span class="ruby-comment"># File bin/bundle, line 47</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">lockfile</span>
   <span class="ruby-identifier">lockfile</span> =
     <span class="ruby-keyword">case</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-identifier">gemfile</span>)
     <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;gems.rb&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">gemfile</span>.<span class="ruby-identifier">sub</span>(<span class="ruby-regexp">/\.rb$/</span>, <span class="ruby-identifier">gemfile</span>)
@@ -503,12 +506,49 @@
 
           
           <div class="method-source-code" id="lockfile_version-source">
-            <pre><span class="ruby-comment"># File bin/bundle, line 55</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">lockfile_version</span>
+            <pre><span class="ruby-comment"># File bin/bundle, line 56</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">lockfile_version</span>
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">file?</span>(<span class="ruby-identifier">lockfile</span>)
   <span class="ruby-identifier">lockfile_contents</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">lockfile</span>)
-  <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">lockfile_contents</span> <span class="ruby-operator">=~</span> <span class="ruby-node">/\n\nBUNDLED WITH\n\s{2,}(#{Gem::Version::VERSION_PATTERN})\n/</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">lockfile_contents</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/\n\nBUNDLED WITH\n\s{2,}(#{Gem::Version::VERSION_PATTERN})\n/</span>
   <span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">last_match</span>(<span class="ruby-value">1</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-parallel_tests" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">parallel_tests</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="parallel_tests-source">
+            <pre><span class="ruby-comment"># File test/test_helper.rb, line 16</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">parallel_tests</span>
+  (<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">1000</span>).<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">num</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">define_method</span>(<span class="ruby-node">&quot;test_#{num.to_s.to_sym}&quot;</span>) <span class="ruby-keyword">do</span>
+      <span class="ruby-identifier">assert</span> <span class="ruby-keyword">true</span>, <span class="ruby-keyword">true</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -540,7 +580,7 @@
           
           <div class="method-source-code" id="system-21-source">
             <pre><span class="ruby-comment"># File bin/setup, line 7</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">system!</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">system!</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
   <span class="ruby-identifier">system</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">abort</span>(<span class="ruby-node">&quot;\n== Command #{args} failed ==&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -560,8 +600,8 @@
 
 
 <footer id="validator-badges" role="contentinfo">
-  <p><a href="http://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://rdoc.github.io/rdoc">RDoc</a> 5.1.0.
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 
