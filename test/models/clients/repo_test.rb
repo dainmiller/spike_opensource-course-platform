@@ -3,12 +3,12 @@ require 'test_helper'
 class Clients::RepoTest < ActiveSupport::TestCase
   
   test "Repo class exists" do
-    assert Clients::Repo.new(nil)
+    assert Clients::Repo.new(response: {'url' => '', "name" => ''})
   end
   
   test "Repo class should start w/response json" do
     assert_raise(ArgumentError) { Clients::Repo.new }
-    assert Clients::Repo.new({})
+    assert Clients::Repo.new(response: {'url' => '', "name" => ''})
   end
   
   test "Repo class contains URL to contents for that repo on github" do  
@@ -18,7 +18,7 @@ class Clients::RepoTest < ActiveSupport::TestCase
 
   test "Repo class contains title to contents for repo on github" do
     client = Clients::Github.new
-    assert_equal client.repos.first.title, "abc-course"
+    assert_equal client.repos.first.title, "backend-languages"
   end
   
   test "Repo class fetches contents of repos in org via repo contents path" do

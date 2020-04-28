@@ -1,25 +1,26 @@
-<div class="center-app left">
-	
-	<div class="inner-center">
-	
-		<div class="center-top">
-			<div class="search">
-				<input class="search" type="search" placeholder="Search..." />
-			</div>
-			<div class="notifications">
-			</div>
-		</div>
-		
-		<div class="courses">
-			<h1 id="courses">Courses</h1>
-			<% @courses.each do |course| %>
-				<div class="course course-<%= course.id %>">
-					<a href="/courses/<%= course.id %>"><%= course.title %></a>
-					<div class="course-lessons">25 Lessons</div>					
-				</div>
-			<% end %>
-		</div>
-		
+<!-- <div class="center-top">
+	<div class="search">
+		<input class="search" type="search" placeholder="Search..." />
 	</div>
-	
+	<div class="notifications">
+	</div>
+</div>
+ -->
+ 
+<div class="courses">
+	<h1 id="courses">Courses</h1>
+	<% @courses.each do |course| %>
+		<div class="course course-<%= course.id %> <% if course.try(:featured) %>featured<% end %>">
+			<h2>
+				<a style="text-decoration: none; color: #fff;" href="/courses/<%= course.id %>">
+					<%= course %>
+				</a>
+			</h2>
+
+			<a style="text-decoration: none; color: #fff;" href="/courses/<%= course.id %>">
+				<%= course.tracks.count %> Tracks <br />
+				<%= course.tracks.map { |track| track.lessons.count }.inject(:+) %> Lessons
+			</a>
+		</div>
+	<% end %>
 </div>

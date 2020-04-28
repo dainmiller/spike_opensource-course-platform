@@ -19,11 +19,6 @@ module Clients
   class Github
     include Clientable
 
-    ROOT      = 'https://api.github.com'.freeze
-    ORG       = 'opensourcecourses'.freeze
-    REPOS     = "#{ROOT}/orgs/#{ORG}/repos".freeze
-    CONTENTS  = '/contents'.freeze
-
     class << self
       # Proxy class methods that allows a simpler interface
       # to the &.each API.
@@ -46,9 +41,13 @@ module Clients
     def initialize
       @repos = repos
     end
-
+    
+    def repos_url
+      Clients::Config::Urls::REPOS
+    end
+    
     def repos
-      @_repos ||= fetch_and_parse_and_cache(REPOS).map do |repo|
+      @_repos ||= fetch_and_parse_and_cache(repos_url).map do |repo|
         Clients::Repo.new repo
       end
     end

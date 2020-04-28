@@ -1,1 +1,11 @@
-<%= @track.title %>
+<h1><strong><%= @track %></strong> track from <strong><%= @track.course %></strong></h1> 
+
+<h2>
+	<ul>
+		<% @track.lessons.each do |lesson| %>
+		<li>
+			Lesson: <%= link_to lesson.title, "/courses/#{@track.course.id}/lessons/#{lesson.id}" %>
+		</li>
+		<% end %>
+	</ul>
+</h2>

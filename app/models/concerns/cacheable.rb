@@ -10,7 +10,11 @@ module Cacheable
     end
     
     def file_exists?
-      not File.read('org.json').empty?
+      begin File.read('org.json')
+        true
+      rescue
+        false
+      end
     end
     
   end

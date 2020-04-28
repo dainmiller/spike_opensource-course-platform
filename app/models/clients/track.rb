@@ -11,29 +11,21 @@
 #
 class Clients::Track < ApiClient
   include Clientable
-  
+
   SETTINGS = {
     :table => Track
   }
-  
+
   def initialize response:, course:
     @response = response
     @course   = course
     super
   end
-  
+
   private
-    def _save
-      @track ||= table.find_or_create_by \
-        course_id: @course.id, title: title, url: url
-      lazy_load_track_contents
-    end
-  
-    def lazy_load_track_contents
-      contents.each do |lesson|
-        Clients::Lessons::Lesson.new(
-          response: lesson, track: @track
-        ).save!
-      end
+    def save_record
+      super \
+        belongs_to: @course,
+        callback_with: Clients::Data::TrackLoader.data
     end
 end

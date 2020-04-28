@@ -3,4 +3,8 @@ class Track < ApplicationRecord
   has_many :lessons
   
   validates :course, presence: true
+
+  def to_s
+  	title
+  end
 end

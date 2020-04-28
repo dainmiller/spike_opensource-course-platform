@@ -7,8 +7,8 @@ Dir["app/models/*.rb"].each do |model|
   end
 end
 
-Course.create \
-  title: 'Beginner Illustration'
-  
-Course.create \
-  title: 'Ruby on Rails for Beginner'
+# Course.create \
+#   title: 'Beginner Illustration'
+#
+# Course.create \
+#   title: 'Ruby on Rails for Beginner'

@@ -23,11 +23,8 @@ module Searchable
     end
     
     def self._find_all_by table:, term:
-      begin
-        table
-          .titleize
-          .constantize
-          .where("title like '%#{term}%'")
+      begin 
+        table.titleize.constantize.where("title like '%#{term}%'")
       rescue
         []
       end

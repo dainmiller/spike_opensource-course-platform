@@ -8,7 +8,11 @@ class CoursesController < ApplicationController
   # servers - app servers not meant to pull in data from an API.
   # Course.lazy_load_courses.all 
   def index
-    @courses ||= Course.all
+    if Clients::Github::Changes.any?
+      @courses ||= Course.lazy_load.all
+    else
+      @courses ||= Course.all
+    end
   end
   
   def show

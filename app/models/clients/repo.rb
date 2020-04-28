@@ -21,18 +21,13 @@ class Clients::Repo < ApiClient
     @response = response
     super
   end
-
+  
+  def self.all
+    Clients::Github.all
+  end
+  
   private
-    def _save
-      @course ||= table.find_or_create_by title: title, url: url
-      lazy_load_course_contents
-    end
-    
-    def lazy_load_course_contents
-      contents.each do |track|
-        Clients::Track.new(
-          response: track, course: @course
-        ).save!
-      end
+    def save_record
+      super callback_with: Clients::Data::CourseLoader.data
     end
 end

@@ -10,7 +10,7 @@
   </head>
 	
   <body>
-		<div class="left-sidebar left">
+		<div class="left-sidebar left hidden">
 			<div class="logo">
 			</div>
 			
@@ -27,7 +27,11 @@
 			</div>
 		</div>
 		
-    <%= yield %>
+		<div class="center-app left">
+			<div class="inner-center">
+				<%= yield %>
+			</div>
+		</div>
 		
 		<div class="right-app right">
 			<div class="progress">
