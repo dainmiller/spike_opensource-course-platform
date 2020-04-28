@@ -41,11 +41,11 @@ module Clients
     def initialize
       @repos = repos
     end
-    
+
     def repos_url
       Clients::Config::Urls::REPOS
     end
-    
+
     def repos
       @_repos ||= fetch_and_parse_and_cache(repos_url).map do |repo|
         Clients::Repo.new repo

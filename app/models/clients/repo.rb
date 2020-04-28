@@ -10,7 +10,7 @@
 #
 class Clients::Repo < ApiClient
   include Clientable
-  
+
   attr_accessor :response, :url, :title
 
   SETTINGS = {
@@ -21,13 +21,12 @@ class Clients::Repo < ApiClient
     @response = response
     super
   end
-  
+
   def self.all
     Clients::Github.all
   end
-  
-  private
-    def save_record
-      super callback_with: Clients::Data::CourseLoader.data
-    end
+
+  def save_record
+    save_record! callback_with: Clients::DataLoader::CourseLoader
+  end
 end

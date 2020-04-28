@@ -24,8 +24,9 @@ class Clients::Track < ApiClient
 
   private
     def save_record
-      super \
+      save_record!(
         belongs_to: @course,
-        callback_with: Clients::Data::TrackLoader.data
+        callback_with: Clients::DataLoader::TrackLoader
+      )
     end
 end

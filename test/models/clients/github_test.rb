@@ -7,15 +7,20 @@ class Clients::GithubTest < ActiveSupport::TestCase
   end
 
   test "github org constant set" do
-    assert_equal "opensourcecourses", Clients::Github::ORG
+    assert_equal "opensourcecourses", Clients::Config::Urls::ORG
   end
 
   test "github client fetches repos from org" do
-    assert_equal 1, Clients::Github.new.repos.count
+    count = JSON.parse(
+      HTTParty.get(
+        'https://api.github.com/orgs/opensourcecourses/repos/'
+      ).body
+    ).count
+    assert_equal count, Clients::Github.new.repos.count
   end
 
   test "github client includes route to generic '/contents' path" do
-    assert_not_nil Clients::Github::CONTENTS
+    assert_not_nil Clients::Config::Urls::CONTENTS
   end
 
   test "github client builds Repo classes for each repo in github org" do
@@ -41,7 +46,7 @@ class Clients::GithubTest < ActiveSupport::TestCase
 
   test "github client saves repos as courses when building out the data models" do
     Clients::Github.all.each do |repo|
-      assert repo.save
+      assert repo.save!
       assert_equal Course.last.title, repo.title
     end
   end
