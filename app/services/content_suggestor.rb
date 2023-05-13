@@ -1,4 +1,4 @@
-class ContentSuggestor
+class ContentSuggestor < ApplicationModel
   NEXT_UP_IN_UNRECOMMENDED_LIST = 1
 
   def initialize recommendables:, user:, recommended:
@@ -26,7 +26,7 @@ class ContentSuggestor
     end
 
     def first_unseen_recommendable
-      unrecommended_recommendables.detect do |recommendable|
+      unrecommended.detect do |recommendable|
         status_finder
           .current_status_for(recommendable)
           .unstarted?

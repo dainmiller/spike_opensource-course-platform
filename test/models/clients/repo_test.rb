@@ -43,4 +43,11 @@ class Clients::RepoTest < ActiveSupport::TestCase
     end
   end
 
+  test "github client saves repos as courses when building out the data models" do
+    Clients::Github.all.each do |repo|
+      assert repo.save!
+      assert_equal Course.last.title, repo.title
+    end
+  end
+
 end

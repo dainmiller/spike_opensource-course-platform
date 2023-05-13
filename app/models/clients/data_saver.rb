@@ -7,7 +7,7 @@ module Clients
       )
 
       record.update(
-        "#{relationship.class.table_name.downcase.singularize}_id" => relationship.id
+        relationship.class.table_name.downcase => relationship
       ) if relationship
 
       data_loader.send("data", [relationship, klass.contents])

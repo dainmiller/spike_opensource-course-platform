@@ -1,8 +1,8 @@
 module Clients
   class Lessons < ApiClient
-    
+
     attr_accessor :response, :track
-    
+
     SETTINGS = {
       :table => Lesson
     }
@@ -15,10 +15,10 @@ module Clients
 
     private
       def save_record
-        save_record!(
+        save_record! \
           belongs_to: @track,
           callback_with: Clients::DataLoader::LessonLoader
-        )
       end
   end
 end
+q
